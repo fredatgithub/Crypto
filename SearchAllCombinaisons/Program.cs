@@ -2,17 +2,17 @@
 
 namespace SearchAllCombinaisons
 {
-  class Program
+  public class Program
   {
-    static readonly char[] PossibleCharacters =  {'0','1','2','3','4','5','6','7','8','9',
+    private static readonly char[] PossibleCharacters =  {'0','1','2','3','4','5','6','7','8','9',
       'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
       'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
       '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}',
       ';', ':', ',', '.', '<', '>', '/', '?' };
-    static string _findPassword;
-    static int _combi;
+    private static string _findPassword;
+    private static int _combi;
 
-    static void Main()
+    public static void Main()
     {
       int count;
       Console.WriteLine("Enter your Password");
@@ -25,7 +25,7 @@ namespace SearchAllCombinaisons
       }
     }
 
-    static void Recurse(int length, int position, string baseString)
+    private static void Recurse(int length, int position, string baseString)
     {
       for (int count = 0; count < PossibleCharacters.Length; count++)
       {
