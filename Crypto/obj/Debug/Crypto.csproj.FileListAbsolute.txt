@@ -1,0 +1,10 @@
+c:\users\user\documents\visual studio 2015\Projects\Crypto\Crypto\bin\Debug\Crypto.exe.config
+c:\users\user\documents\visual studio 2015\Projects\Crypto\Crypto\bin\Debug\Translations.xml
+c:\users\user\documents\visual studio 2015\Projects\Crypto\Crypto\bin\Debug\Crypto.exe
+c:\users\user\documents\visual studio 2015\Projects\Crypto\Crypto\bin\Debug\Crypto.pdb
+c:\users\user\documents\visual studio 2015\Projects\Crypto\Crypto\obj\Debug\Crypto.AboutBoxApplication.resources
+c:\users\user\documents\visual studio 2015\Projects\Crypto\Crypto\obj\Debug\Crypto.FormMain.resources
+c:\users\user\documents\visual studio 2015\Projects\Crypto\Crypto\obj\Debug\Crypto.Properties.Resources.resources
+c:\users\user\documents\visual studio 2015\Projects\Crypto\Crypto\obj\Debug\Crypto.csproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2015\Projects\Crypto\Crypto\obj\Debug\Crypto.exe
+c:\users\user\documents\visual studio 2015\Projects\Crypto\Crypto\obj\Debug\Crypto.pdb
