@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAllCombinaisons", "Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoLibrary", "CryptoLibrary\CryptoLibrary.csproj", "{3B6006EA-3B01-4662-8F2C-A7B4CB5AA2A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CountWordsPerLanguage", "CountWordsPerLanguage\CountWordsPerLanguage.csproj", "{9831B1A0-B806-40AD-A038-68F41984A6BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3B6006EA-3B01-4662-8F2C-A7B4CB5AA2A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B6006EA-3B01-4662-8F2C-A7B4CB5AA2A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B6006EA-3B01-4662-8F2C-A7B4CB5AA2A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9831B1A0-B806-40AD-A038-68F41984A6BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9831B1A0-B806-40AD-A038-68F41984A6BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9831B1A0-B806-40AD-A038-68F41984A6BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9831B1A0-B806-40AD-A038-68F41984A6BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
