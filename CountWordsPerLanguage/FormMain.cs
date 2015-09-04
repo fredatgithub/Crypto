@@ -658,14 +658,15 @@ namespace CountWordsPerLanguage
         }
       }
 
-      int[] result = new int[26];
-      for (int i = 1; i < 26; i++)
+      int[] result = new int[27];
+      for (int i = 1; i < 27; i++)
       {
         // ASCII code table
+        // A = 65
+        // Z = 90
         // a = 97
         // z = 122
-
-        result[i] = resultTmp[i + 64] + resultTmp[i + 128];
+        result[i] = resultTmp[i + 64] + resultTmp[i + 96];
       }
 
       return result;
@@ -673,26 +674,63 @@ namespace CountWordsPerLanguage
 
     private static int[] CountLetters(string text)
     {
-      int[] result = new int[26];
+      int[] result = new int[27]; // result[1] counts a
       foreach (char letter in text)
       {
-        if (char.IsLetter(letter))
+        if (char.IsLetter(letter)) // exclude numerics, special char
         {
-          if ((letter < 65 ) || letter > 125) // exclude accented letters
+          char letterTmp = letter.ToString().ToLower().ToCharArray()[0];
+          if ((letterTmp >= 97) && letterTmp <= 122) // exclude accented letters
           {
-            if (char.IsLower(letter))
-            {
-              result[letter]++;
-            }
-            else
-            {
-              result[letter - 125]++;
-            }
+            result[letterTmp - 96]++;
           }
         }
       }
-      
+
       return result;
+    }
+
+    public static Dictionary<char, int> CountLettersToDicoDictionary(string myString, bool wholeDictionary = true)
+    {
+      var input = myString.ToLower();
+      var result = new Dictionary<char, int>();
+      if (wholeDictionary)
+      {
+        for (char i = 'a'; i <= 'z'; i++)
+        {
+          result.Add(i, 0);
+        }
+      }
+
+      for (int i = 0; i <= input.Length - 1; i++)
+      {
+        if (result.ContainsKey(input[i]))
+        {
+          result[input[i]]++;
+        }
+        else
+        {
+          if (char.IsLetter(input[i]))
+          {
+            if (!wholeDictionary)
+            {
+              result.Add(input[i], 1);
+            }
+            else
+            {
+              result[input[i]]++;
+            }
+
+          }
+        }
+      }
+
+      return result;
+    }
+
+    public static int CountWords(string input)
+    {
+      return input.Split(' ').Length;
     }
 
     private void buttonClear_Click(object sender, EventArgs e)

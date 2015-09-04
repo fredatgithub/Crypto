@@ -376,6 +376,7 @@
       this.textBoxSource.Name = "textBoxSource";
       this.textBoxSource.Size = new System.Drawing.Size(560, 270);
       this.textBoxSource.TabIndex = 2;
+      this.textBoxSource.Text = "azAZ";
       this.textBoxSource.TextChanged += new System.EventHandler(this.textBoxSource_TextChanged);
       // 
       // labelChooseLanguage
