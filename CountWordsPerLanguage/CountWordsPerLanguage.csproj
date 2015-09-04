@@ -93,6 +93,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LanguagePerCountry.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="LetterCountPerLanguage.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

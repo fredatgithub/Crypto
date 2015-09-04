@@ -23,5 +23,11 @@
     <Setting Name="DisplayToolStripMenuItem" Type="System.String" Scope="User">
       <Value Profile="(Default)">Large</Value>
     </Setting>
+    <Setting Name="comboBoxLanguage" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LanguagePerCountryFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LanguagePerCountry.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

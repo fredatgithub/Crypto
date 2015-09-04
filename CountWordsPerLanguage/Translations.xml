@@ -184,21 +184,21 @@
       <englishValue>No Text</englishValue>
       <frenchValue>Aucun texte</frenchValue>
     </term>
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
+    <term>
+      <name>Choose a language</name>
+      <englishValue>Choose a language</englishValue>
+      <frenchValue>Choisissez une langue</frenchValue>
+    </term>
+    <term>
+      <name>Count</name>
+      <englishValue>Count</englishValue>
+      <frenchValue>Compter</frenchValue>
+    </term>
+    <term>
+      <name>Clear</name>
+      <englishValue>Clear</englishValue>
+      <frenchValue>Effacer</frenchValue>
+    </term>
     <!--<term>
       <name></name>
       <englishValue></englishValue>

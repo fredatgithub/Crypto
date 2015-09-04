@@ -17,6 +17,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#define debug
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -67,23 +68,52 @@ namespace CountWordsPerLanguage
     private void LoadSettingsAtStartup()
     {
       DisplayTitle();
+      LoadComboBox(comboBoxLanguage, Settings.Default.LanguagePerCountryFileName);
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
-      LoadComboBox(comboBoxLanguage);
     }
 
-    private static void LoadComboBox(ComboBox cb)
+    private static void LoadComboBox(ComboBox cb, string fileName)
     {
+      if (!File.Exists(fileName))
+      {
+        CreateFile(fileName);
+      }
+      
+      XDocument xDoc = XDocument.Load(fileName);
+      var result = from node in xDoc.Descendants("language")
+                   where node.HasElements
+                   let xElementName = node.Element("name")
+                   where xElementName != null
+                   select new
+                   {
+                     name = xElementName.Value,
+                   };
+
       cb.Items.Clear();
-      cb.Items.Add("English");
-      cb.Items.Add("French");
-      cb.Items.Add("Italian");
-      cb.Items.Add("Spanish");
-      cb.Items.Add("Portuguese");
-      cb.Items.Add("German");
-      cb.Items.Add("Russian");
+      foreach (var item in result)
+      {
+        cb.Items.Add(item.name);
+      }
+
       cb.SelectedIndex = 0;
+    }
+
+    private static void CreateFile(string fileName)
+    {
+      if (fileName == Settings.Default.LanguagePerCountryFileName)
+      {
+        // TODO create file 
+        // cb.Items.Add("English");
+        // cb.Items.Add("French");
+        // cb.Items.Add("Italian");
+        // cb.Items.Add("Spanish");
+        // cb.Items.Add("Portuguese");
+        // cb.Items.Add("German");
+        // cb.Items.Add("Russian");
+
+      }
     }
 
     private void LoadLanguages()
@@ -275,6 +305,7 @@ namespace CountWordsPerLanguage
       Top = Settings.Default.WindowTop < 0 ? 0 : Settings.Default.WindowTop;
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
+      comboBoxLanguage.SelectedIndex = Settings.Default.comboBoxLanguage;
     }
 
     private void SaveWindowValue()
@@ -285,6 +316,7 @@ namespace CountWordsPerLanguage
       Settings.Default.WindowTop = Top;
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
+      Settings.Default.comboBoxLanguage = comboBoxLanguage.SelectedIndex;
       Settings.Default.Save();
     }
 
@@ -394,6 +426,9 @@ namespace CountWordsPerLanguage
           SmallToolStripMenuItem.Text = _languageDicoEn["Small"];
           MediumToolStripMenuItem.Text = _languageDicoEn["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoEn["Large"];
+          labelChooseLanguage.Text = _languageDicoEn["Choose a language"];
+          buttonCountWords.Text = _languageDicoEn["Count"];
+          buttonClear.Text = _languageDicoEn["Clear"];
 
           _currentLanguage = "English";
           break;
@@ -430,7 +465,9 @@ namespace CountWordsPerLanguage
           SmallToolStripMenuItem.Text = _languageDicoFr["Small"];
           MediumToolStripMenuItem.Text = _languageDicoFr["Medium"];
           LargeToolStripMenuItem.Text = _languageDicoFr["Large"];
-
+          labelChooseLanguage.Text = _languageDicoFr["Choose a language"];
+          buttonCountWords.Text = _languageDicoFr["Count"];
+          buttonClear.Text = _languageDicoFr["Clear"];
           _currentLanguage = "French";
           break;
         default:
@@ -644,6 +681,10 @@ namespace CountWordsPerLanguage
       }
 
       int[] count = CountLetters(textBoxSource.Text);
+      int[] count2 = CountLetters2(textBoxSource.Text);
+#if debug
+      //MessageBox.Show("Do CountLetters and CountLMetters2 bring the same result: " + (count == count2));
+#endif
 
     }
 
