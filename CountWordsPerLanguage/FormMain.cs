@@ -636,8 +636,63 @@ namespace CountWordsPerLanguage
 
     private void buttonCountWords_Click(object sender, EventArgs e)
     {
-      DisplayMessage(Translate("No text has been found"), Translate("No Text"),
+      if (textBoxSource.Text == string.Empty)
+      {
+        DisplayMessage(Translate("No text has been found"), Translate("No Text"),
         MessageBoxButtons.OK);
+        return;
+      }
+
+      int[] count = CountLetters(textBoxSource.Text);
+
+    }
+
+    private static int[] CountLetters2(string text)
+    {
+      int[] resultTmp = new int[240];
+      foreach (char letter in text)
+      {
+        if (char.IsLetter(letter))
+        {
+          resultTmp[letter]++;
+        }
+      }
+
+      int[] result = new int[26];
+      for (int i = 1; i < 26; i++)
+      {
+        // ASCII code table
+        // a = 97
+        // z = 122
+
+        result[i] = resultTmp[i + 64] + resultTmp[i + 128];
+      }
+
+      return result;
+    }
+
+    private static int[] CountLetters(string text)
+    {
+      int[] result = new int[26];
+      foreach (char letter in text)
+      {
+        if (char.IsLetter(letter))
+        {
+          if ((letter < 65 ) || letter > 125) // exclude accented letters
+          {
+            if (char.IsLower(letter))
+            {
+              result[letter]++;
+            }
+            else
+            {
+              result[letter - 125]++;
+            }
+          }
+        }
+      }
+      
+      return result;
     }
 
     private void buttonClear_Click(object sender, EventArgs e)
