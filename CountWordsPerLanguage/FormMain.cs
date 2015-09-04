@@ -80,7 +80,7 @@ namespace CountWordsPerLanguage
       {
         CreateFile(fileName);
       }
-      
+
       XDocument xDoc = XDocument.Load(fileName);
       var result = from node in xDoc.Descendants("language")
                    where node.HasElements
@@ -104,15 +104,41 @@ namespace CountWordsPerLanguage
     {
       if (fileName == Settings.Default.LanguagePerCountryFileName)
       {
-        // TODO create file 
-        // cb.Items.Add("English");
-        // cb.Items.Add("French");
-        // cb.Items.Add("Italian");
-        // cb.Items.Add("Spanish");
-        // cb.Items.Add("Portuguese");
-        // cb.Items.Add("German");
-        // cb.Items.Add("Russian");
+        List<string> minimumVersion = new List<string>
+      {
+        "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
+        "<languages>",
+        "<language>",
+        "<name>English</name>",
+        "</language>",
+        "<language>",
+        "<name>French</name>",
+        "</language>",
+        "<language>",
+        "<name>Italian</name>",
+        "</language>",
+        "<language>",
+        "<name>Spanish</name>",
+        "</language>",
+        "<language>",
+        "<name>Portuguese</name>",
+        "</language>",
+        "<language>",
+        "<name>German</name>",
+        "</language>",
+        "<language>",
+        "<name>Russian</name>",
+        "</language>",
+        "</languages>"
+      };
 
+        StreamWriter sw = new StreamWriter(Settings.Default.LanguagePerCountryFileName);
+        foreach (string item in minimumVersion)
+        {
+          sw.WriteLine(item);
+        }
+
+        sw.Close();
       }
     }
 
@@ -478,7 +504,7 @@ namespace CountWordsPerLanguage
 
     private void cutToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxSource });
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -488,7 +514,7 @@ namespace CountWordsPerLanguage
 
     private void copyToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxSource });
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -498,7 +524,7 @@ namespace CountWordsPerLanguage
 
     private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxSource });
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -508,11 +534,9 @@ namespace CountWordsPerLanguage
 
     private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
-      if (focusedControl is TextBox)
-      {
-        ((TextBox)focusedControl).SelectAll();
-      }
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxSource });
+      TextBox control = focusedControl as TextBox;
+      control?.SelectAll();
     }
 
     private void CutToClipboard(TextBoxBase tb, string errorMessage = "nothing")
@@ -681,10 +705,23 @@ namespace CountWordsPerLanguage
       }
 
       int[] count = CountLetters(textBoxSource.Text);
-      int[] count2 = CountLetters2(textBoxSource.Text);
+      
 #if debug
+      int[] count2 = CountLetters2(textBoxSource.Text);
       //MessageBox.Show("Do CountLetters and CountLMetters2 bring the same result: " + (count == count2));
 #endif
+      SaveToXml(count);
+
+
+    }
+
+    private static void SaveToXml(int[] list)
+    {
+      if (!File.Exists(Settings.Default.LanguagePerCountryFileName))
+      {
+        CreateFile(Settings.Default.LanguagePerCountryFileName);
+      }
+
 
     }
 
