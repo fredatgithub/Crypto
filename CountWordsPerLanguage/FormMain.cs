@@ -536,7 +536,10 @@ namespace CountWordsPerLanguage
     {
       Control focusedControl = FindFocusedControl(new List<Control> { textBoxSource });
       TextBox control = focusedControl as TextBox;
-      control?.SelectAll();
+      if (!(control == null))
+      {
+        control.SelectAll();
+      }
     }
 
     private void CutToClipboard(TextBoxBase tb, string errorMessage = "nothing")
