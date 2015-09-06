@@ -8,7 +8,7 @@ namespace CountWordsPerLanguage
     [XmlElement]
     public string Language { get; set; }
     [XmlElement]
-    public Hash FileHashHash { get; set; }
+    public Hash FileHash { get; set; }
     [XmlElement]
     public int LetterA { get; set; }
     [XmlElement]
