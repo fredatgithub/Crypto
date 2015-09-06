@@ -5,61 +5,61 @@ namespace CountWordsPerLanguage
 {
   class LetterFrequency
   {
-    [XmlAnyElement]
+    [XmlElement]
     public string Language { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public Hash FileHashHash { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterA { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterB { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterC { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterD { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterE { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterF { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterG { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterH { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterI { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterJ { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterK { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterL { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterM { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterN { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterO { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterP { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterQ { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterR { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterS { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterT { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterU { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterV { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterW { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterX { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterY { get; set; }
-    [XmlAnyElement]
+    [XmlElement]
     public int LetterZ { get; set; }
 
     public LetterFrequency(string language = "english")
