@@ -24,6 +24,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -714,6 +715,11 @@ namespace CountWordsPerLanguage
       int[] count2 = CountLetters2(textBoxSource.Text);
       //MessageBox.Show("Do CountLetters and CountLMetters2 bring the same result: " + (count == count2));
 #endif
+      if (comboBoxLanguage.SelectedIndex == -1)
+      {
+        comboBoxLanguage.SelectedIndex = 0;
+      }
+
       var oneLetterFrequency = new LetterFrequency(comboBoxLanguage.SelectedItem.ToString());
       oneLetterFrequency.FeedLetters(count);
       oneLetterFrequency.AddHash(textBoxSource.Text);
@@ -730,7 +736,7 @@ namespace CountWordsPerLanguage
       }
       
       var serializer = new XmlSerializer(typeof(LetterFrequency));
-      using (TextWriter writer = new StreamWriter(Settings.Default.LanguagePerCountryFileName))
+      using (var writer = new StreamWriter(Settings.Default.LetterCountPerLanguageFileName, true, Encoding.UTF8))
       {
         serializer.Serialize(writer, letterFrequency);
       }
@@ -739,7 +745,7 @@ namespace CountWordsPerLanguage
 
     private static int[] CountLetters2(string text)
     {
-      int[] resultTmp = new int[240];
+      int[] resultTmp = new int[399];
       foreach (char letter in text)
       {
         if (char.IsLetter(letter))

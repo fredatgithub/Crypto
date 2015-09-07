@@ -130,5 +130,17 @@ namespace CountWordsPerLanguage.Properties {
                 this["LanguagePerCountryFileName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LetterCountPerLanguage.xml")]
+        public string LetterCountPerLanguageFileName {
+            get {
+                return ((string)(this["LetterCountPerLanguageFileName"]));
+            }
+            set {
+                this["LetterCountPerLanguageFileName"] = value;
+            }
+        }
     }
 }

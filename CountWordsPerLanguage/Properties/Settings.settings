@@ -29,5 +29,8 @@
     <Setting Name="LanguagePerCountryFileName" Type="System.String" Scope="User">
       <Value Profile="(Default)">LanguagePerCountry.xml</Value>
     </Setting>
+    <Setting Name="LetterCountPerLanguageFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LetterCountPerLanguage.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

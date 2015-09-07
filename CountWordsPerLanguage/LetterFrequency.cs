@@ -65,7 +65,7 @@ namespace CountWordsPerLanguage
     [XmlElement]
     public int LetterZ { get; set; }
 
-    public LetterFrequency()
+    public LetterFrequency() // constructor without parameters required by XML Serialization
     {
       Language = "english";
     }
