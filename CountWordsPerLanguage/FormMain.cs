@@ -714,25 +714,25 @@ namespace CountWordsPerLanguage
       int[] count2 = CountLetters2(textBoxSource.Text);
       //MessageBox.Show("Do CountLetters and CountLMetters2 bring the same result: " + (count == count2));
 #endif
-
-      SaveToXml(count);
+      var oneLetterFrequency = new LetterFrequency();
+      oneLetterFrequency.FeedLetters(count);
+      oneLetterFrequency.AddHash(textBoxSource.Text);
+      SaveToXml(oneLetterFrequency);
 
 
     }
 
-    private static void SaveToXml(int[] list)
+    private static void SaveToXml(LetterFrequency letterFrequency)
     {
       if (!File.Exists(Settings.Default.LanguagePerCountryFileName))
       {
         CreateFile(Settings.Default.LanguagePerCountryFileName);
       }
-
-      var oneLetterFrequency = new LetterFrequency();
-      oneLetterFrequency.FeedLetters(list);
+      
       var serializer = new XmlSerializer(typeof(LetterFrequency));
       using (TextWriter writer = new StreamWriter(Settings.Default.LanguagePerCountryFileName))
       {
-        serializer.Serialize(writer, oneLetterFrequency);
+        serializer.Serialize(writer, letterFrequency);
       }
 
     }

@@ -1,4 +1,8 @@
-﻿using System.Security.Policy;
+﻿using System;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Security.Policy;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace CountWordsPerLanguage
@@ -8,7 +12,7 @@ namespace CountWordsPerLanguage
     [XmlElement]
     public string Language { get; set; }
     [XmlElement]
-    public Hash FileHash { get; set; }
+    public byte[] FileHash { get; set; }
     [XmlElement]
     public int LetterA { get; set; }
     [XmlElement]
@@ -102,5 +106,36 @@ namespace CountWordsPerLanguage
       LetterZ = letterArray[26];
     }
 
+    public void AddHash(string text)
+    {
+      byte[] buffer = Encoding.Default.GetBytes(text);
+      var fileHash2 = SHA512.Create();
+      FileHash = fileHash2.ComputeHash(buffer);
+    }
+
+    private string RsaEncryption(string clearData)
+    {
+      CspParameters param = new CspParameters {KeyContainerName = "MyKeyContainer"};
+      using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(param))
+      {
+        string plainText = clearData;
+        byte[] plainData = Encoding.Default.GetBytes(plainText);
+        byte[] encryptedData = rsa.Encrypt(plainData, false);
+        string encryptedString = Convert.ToBase64String(encryptedData);
+        return encryptedString;
+      }
+    }
+
+    private string RsaDecryption(string encryptedData)
+    {
+      CspParameters param = new CspParameters {KeyContainerName = "MyKeyContainer"};
+      using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(param))
+      {
+        byte[] encryptedBytes = Convert.FromBase64String(encryptedData);
+        byte[] decryptedData = rsa.Decrypt(encryptedBytes, false);
+        string plainData = Encoding.Default.GetString(decryptedData);
+        return plainData;
+      }
+    }
   }
 }
