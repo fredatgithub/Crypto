@@ -62,7 +62,12 @@ namespace CountWordsPerLanguage
     [XmlElement]
     public int LetterZ { get; set; }
 
-    public LetterFrequency(string language = "english")
+    public LetterFrequency()
+    {
+      Language = "english";
+    }
+
+    public LetterFrequency(string language)
     {
       Language = language;
     }

@@ -714,6 +714,7 @@ namespace CountWordsPerLanguage
       int[] count2 = CountLetters2(textBoxSource.Text);
       //MessageBox.Show("Do CountLetters and CountLMetters2 bring the same result: " + (count == count2));
 #endif
+
       SaveToXml(count);
 
 
@@ -726,10 +727,12 @@ namespace CountWordsPerLanguage
         CreateFile(Settings.Default.LanguagePerCountryFileName);
       }
 
-      var serializer = new XmlSerializer(typeof(AddressDetails));
-      using (TextWriter writer = new StreamWriter(@"C:\Xml.xml"))
+      var oneLetterFrequency = new LetterFrequency();
+      oneLetterFrequency.FeedLetters(list);
+      var serializer = new XmlSerializer(typeof(LetterFrequency));
+      using (TextWriter writer = new StreamWriter(Settings.Default.LanguagePerCountryFileName))
       {
-        serializer.Serialize(writer, details);
+        serializer.Serialize(writer, oneLetterFrequency);
       }
 
     }
