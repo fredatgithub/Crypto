@@ -375,6 +375,7 @@
       this.textBoxSource.Location = new System.Drawing.Point(29, 107);
       this.textBoxSource.Multiline = true;
       this.textBoxSource.Name = "textBoxSource";
+      this.textBoxSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
       this.textBoxSource.Size = new System.Drawing.Size(560, 270);
       this.textBoxSource.TabIndex = 2;
       this.textBoxSource.Text = "azAZ";
