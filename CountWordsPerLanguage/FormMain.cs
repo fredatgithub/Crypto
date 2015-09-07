@@ -26,6 +26,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using CountWordsPerLanguage.Properties;
 
 namespace CountWordsPerLanguage
@@ -722,6 +723,11 @@ namespace CountWordsPerLanguage
         CreateFile(Settings.Default.LanguagePerCountryFileName);
       }
 
+      var serializer = new XmlSerializer(typeof(AddressDetails));
+      using (TextWriter writer = new StreamWriter(@"C:\Xml.xml"))
+      {
+        serializer.Serialize(writer, details);
+      }
 
     }
 
