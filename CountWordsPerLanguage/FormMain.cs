@@ -714,12 +714,12 @@ namespace CountWordsPerLanguage
       int[] count2 = CountLetters2(textBoxSource.Text);
       //MessageBox.Show("Do CountLetters and CountLMetters2 bring the same result: " + (count == count2));
 #endif
-      var oneLetterFrequency = new LetterFrequency();
+      var oneLetterFrequency = new LetterFrequency(comboBoxLanguage.SelectedItem.ToString());
       oneLetterFrequency.FeedLetters(count);
       oneLetterFrequency.AddHash(textBoxSource.Text);
       SaveToXml(oneLetterFrequency);
 
-
+      MessageBox.Show("Letters frequencies from the text has been added.");
     }
 
     private static void SaveToXml(LetterFrequency letterFrequency)

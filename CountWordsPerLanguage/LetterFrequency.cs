@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
@@ -7,12 +6,12 @@ using System.Xml.Serialization;
 
 namespace CountWordsPerLanguage
 {
-  class LetterFrequency
+  public class LetterFrequency
   {
     [XmlElement]
     public string Language { get; set; }
     [XmlElement]
-    public byte[] FileHash { get; set; }
+    public int FileHash { get; set; }
     [XmlElement]
     public int LetterA { get; set; }
     [XmlElement]
@@ -110,7 +109,8 @@ namespace CountWordsPerLanguage
     {
       byte[] buffer = Encoding.Default.GetBytes(text);
       var fileHash2 = SHA512.Create();
-      FileHash = fileHash2.ComputeHash(buffer);
+      fileHash2.ComputeHash(buffer);
+      FileHash = fileHash2.GetHashCode();
     }
 
     private string RsaEncryption(string clearData)
