@@ -68,5 +68,10 @@ namespace CountWordsPerLanguage
 
       return result;
     }
+
+    public static string SpaceIfFrench(string language = "english")
+    {
+      return language.ToLower() == "french" ? OneSpace : string.Empty;
+    }
   }
 }

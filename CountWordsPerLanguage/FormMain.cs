@@ -65,6 +65,7 @@ namespace CountWordsPerLanguage
     private void FormMain_Load(object sender, EventArgs e)
     {
       LoadSettingsAtStartup();
+      textBoxSource_TextChanged(sender, e);
     }
 
     private void LoadSettingsAtStartup()
@@ -457,7 +458,10 @@ namespace CountWordsPerLanguage
           labelChooseLanguage.Text = _languageDicoEn["Choose a language"];
           buttonCountWords.Text = _languageDicoEn["Count"];
           buttonClear.Text = _languageDicoEn["Clear"];
-
+          labelWordsCount.Text = _languageDicoEn["Number of words"];
+          labelCharacterCount.Text = _languageDicoEn["Number of characters"];
+          textBoxSource_TextChanged(null, null);
+          
           _currentLanguage = "English";
           break;
         case "French":
@@ -496,6 +500,9 @@ namespace CountWordsPerLanguage
           labelChooseLanguage.Text = _languageDicoFr["Choose a language"];
           buttonCountWords.Text = _languageDicoFr["Count"];
           buttonClear.Text = _languageDicoFr["Clear"];
+          labelWordsCount.Text = _languageDicoFr["Number of words"];
+          labelCharacterCount.Text = _languageDicoFr["Number of characters"];
+          textBoxSource_TextChanged(null, null);
           _currentLanguage = "French";
           break;
         default:
@@ -826,7 +833,7 @@ namespace CountWordsPerLanguage
 
     public static int CountWords(string input)
     {
-      return input.Split(' ').Length;
+      return input == string.Empty ? 0 : input.Split(' ').Length;
     }
 
     private void buttonClear_Click(object sender, EventArgs e)
@@ -839,8 +846,10 @@ namespace CountWordsPerLanguage
     {
       buttonClear.Enabled = textBoxSource.Text != string.Empty;
       labelWordsCount.Text = Translate("Number of words") + 
+        Punctuation.SpaceIfFrench(_currentLanguage) +
         Punctuation.Colon + Punctuation.OneSpace + CountWords(textBoxSource.Text);
-      labelCharacterCount.Text = Translate("Number of characters") + 
+      labelCharacterCount.Text = Translate("Number of characters") +
+        Punctuation.SpaceIfFrench(_currentLanguage) +
         Punctuation.Colon + Punctuation.OneSpace + CountCharacters(textBoxSource.Text);
     }
 
