@@ -838,6 +838,15 @@ namespace CountWordsPerLanguage
     private void textBoxSource_TextChanged(object sender, EventArgs e)
     {
       buttonClear.Enabled = textBoxSource.Text != string.Empty;
+      labelWordsCount.Text = Translate("Number of words") + 
+        Punctuation.Colon + Punctuation.OneSpace + CountWords(textBoxSource.Text);
+      labelCharacterCount.Text = Translate("Number of characters") + 
+        Punctuation.Colon + Punctuation.OneSpace + CountCharacters(textBoxSource.Text);
+    }
+
+    private static int CountCharacters(string text)
+    {
+      return text.Length;
     }
   }
 }

@@ -199,16 +199,16 @@
       <englishValue>Clear</englishValue>
       <frenchValue>Effacer</frenchValue>
     </term>
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
+    <term>
+      <name>Number of words</name>
+      <englishValue>Number of words</englishValue>
+      <frenchValue>Nombre de mots</frenchValue>
+    </term>
+    <term>
+      <name>Number of characters</name>
+      <englishValue>Number of characters</englishValue>
+      <frenchValue>Nombre de caractères</frenchValue>
+    </term>
     <!--<term>
       <name></name>
       <englishValue></englishValue>

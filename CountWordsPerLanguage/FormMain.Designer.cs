@@ -70,6 +70,8 @@
       this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
       this.buttonCountWords = new System.Windows.Forms.Button();
       this.buttonClear = new System.Windows.Forms.Button();
+      this.labelWordsCount = new System.Windows.Forms.Label();
+      this.labelCharacterCount = new System.Windows.Forms.Label();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -86,7 +88,7 @@
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-      this.menuStrip1.Size = new System.Drawing.Size(613, 28);
+      this.menuStrip1.Size = new System.Drawing.Size(687, 28);
       this.menuStrip1.TabIndex = 1;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -372,11 +374,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.textBoxSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBoxSource.Location = new System.Drawing.Point(29, 107);
+      this.textBoxSource.Location = new System.Drawing.Point(29, 128);
       this.textBoxSource.Multiline = true;
       this.textBoxSource.Name = "textBoxSource";
       this.textBoxSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-      this.textBoxSource.Size = new System.Drawing.Size(560, 270);
+      this.textBoxSource.Size = new System.Drawing.Size(634, 338);
       this.textBoxSource.TabIndex = 2;
       this.textBoxSource.Text = "azAZ";
       this.textBoxSource.TextChanged += new System.EventHandler(this.textBoxSource_TextChanged);
@@ -422,11 +424,33 @@
       this.buttonClear.UseVisualStyleBackColor = true;
       this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
       // 
+      // labelWordsCount
+      // 
+      this.labelWordsCount.AutoSize = true;
+      this.labelWordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelWordsCount.Location = new System.Drawing.Point(25, 94);
+      this.labelWordsCount.Name = "labelWordsCount";
+      this.labelWordsCount.Size = new System.Drawing.Size(142, 20);
+      this.labelWordsCount.TabIndex = 7;
+      this.labelWordsCount.Text = "Number of words:";
+      // 
+      // labelCharacterCount
+      // 
+      this.labelCharacterCount.AutoSize = true;
+      this.labelCharacterCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelCharacterCount.Location = new System.Drawing.Point(354, 94);
+      this.labelCharacterCount.Name = "labelCharacterCount";
+      this.labelCharacterCount.Size = new System.Drawing.Size(177, 20);
+      this.labelCharacterCount.TabIndex = 8;
+      this.labelCharacterCount.Text = "Number of characters:";
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(613, 403);
+      this.ClientSize = new System.Drawing.Size(687, 492);
+      this.Controls.Add(this.labelCharacterCount);
+      this.Controls.Add(this.labelWordsCount);
       this.Controls.Add(this.buttonClear);
       this.Controls.Add(this.buttonCountWords);
       this.Controls.Add(this.comboBoxLanguage);
@@ -491,5 +515,7 @@
     private System.Windows.Forms.ComboBox comboBoxLanguage;
     private System.Windows.Forms.Button buttonCountWords;
     private System.Windows.Forms.Button buttonClear;
+    private System.Windows.Forms.Label labelWordsCount;
+    private System.Windows.Forms.Label labelCharacterCount;
   }
 }
