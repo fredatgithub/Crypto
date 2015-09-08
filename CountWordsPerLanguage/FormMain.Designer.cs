@@ -397,17 +397,17 @@
       // 
       this.comboBoxLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.comboBoxLanguage.FormattingEnabled = true;
-      this.comboBoxLanguage.Location = new System.Drawing.Point(205, 59);
+      this.comboBoxLanguage.Location = new System.Drawing.Point(226, 59);
       this.comboBoxLanguage.Name = "comboBoxLanguage";
-      this.comboBoxLanguage.Size = new System.Drawing.Size(121, 28);
+      this.comboBoxLanguage.Size = new System.Drawing.Size(157, 28);
       this.comboBoxLanguage.TabIndex = 4;
       // 
       // buttonCountWords
       // 
       this.buttonCountWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonCountWords.Location = new System.Drawing.Point(353, 57);
+      this.buttonCountWords.Location = new System.Drawing.Point(389, 57);
       this.buttonCountWords.Name = "buttonCountWords";
-      this.buttonCountWords.Size = new System.Drawing.Size(75, 31);
+      this.buttonCountWords.Size = new System.Drawing.Size(140, 31);
       this.buttonCountWords.TabIndex = 5;
       this.buttonCountWords.Text = "Count";
       this.buttonCountWords.UseVisualStyleBackColor = true;
@@ -416,9 +416,9 @@
       // buttonClear
       // 
       this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonClear.Location = new System.Drawing.Point(452, 58);
+      this.buttonClear.Location = new System.Drawing.Point(535, 58);
       this.buttonClear.Name = "buttonClear";
-      this.buttonClear.Size = new System.Drawing.Size(75, 31);
+      this.buttonClear.Size = new System.Drawing.Size(117, 31);
       this.buttonClear.TabIndex = 6;
       this.buttonClear.Text = "Clear";
       this.buttonClear.UseVisualStyleBackColor = true;
@@ -438,7 +438,7 @@
       // 
       this.labelCharacterCount.AutoSize = true;
       this.labelCharacterCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelCharacterCount.Location = new System.Drawing.Point(354, 94);
+      this.labelCharacterCount.Location = new System.Drawing.Point(222, 94);
       this.labelCharacterCount.Name = "labelCharacterCount";
       this.labelCharacterCount.Size = new System.Drawing.Size(177, 20);
       this.labelCharacterCount.TabIndex = 8;

@@ -142,5 +142,17 @@ namespace CountWordsPerLanguage.Properties {
                 this["LetterCountPerLanguageFileName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public float _fontSize {
+            get {
+                return ((float)(this["_fontSize"]));
+            }
+            set {
+                this["_fontSize"] = value;
+            }
+        }
     }
 }

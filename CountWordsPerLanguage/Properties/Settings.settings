@@ -32,5 +32,8 @@
     <Setting Name="LetterCountPerLanguageFileName" Type="System.String" Scope="User">
       <Value Profile="(Default)">LetterCountPerLanguage.xml</Value>
     </Setting>
+    <Setting Name="_fontSize" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

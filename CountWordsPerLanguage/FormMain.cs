@@ -43,7 +43,7 @@ namespace CountWordsPerLanguage
     readonly Dictionary<string, string> _languageDicoEn = new Dictionary<string, string>();
     readonly Dictionary<string, string> _languageDicoFr = new Dictionary<string, string>();
     private string _currentLanguage = "english";
-    private float _fontSize = 10;
+    private float _fontSize;
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -77,6 +77,7 @@ namespace CountWordsPerLanguage
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
+      AdjustAllControls();
     }
 
     private static void LoadComboBox(ComboBox cb, string fileName)
@@ -337,6 +338,7 @@ namespace CountWordsPerLanguage
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       comboBoxLanguage.SelectedIndex = Settings.Default.comboBoxLanguage;
+      _fontSize = Settings.Default._fontSize;
     }
 
     private void SaveWindowValue()
@@ -348,6 +350,7 @@ namespace CountWordsPerLanguage
       Settings.Default.LastLanguageUsed = frenchToolStripMenuItem.Checked ? "French" : "English";
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
       Settings.Default.comboBoxLanguage = comboBoxLanguage.SelectedIndex;
+      Settings.Default._fontSize = _fontSize;
       Settings.Default.Save();
     }
 
@@ -672,7 +675,7 @@ namespace CountWordsPerLanguage
     {
       UncheckAllOptions();
       MediumToolStripMenuItem.Checked = true;
-      _fontSize = 12f;
+      _fontSize = 11f;
       AdjustAllControls();
     }
 
@@ -680,7 +683,7 @@ namespace CountWordsPerLanguage
     {
       UncheckAllOptions();
       LargeToolStripMenuItem.Checked = true;
-      _fontSize = 14f;
+      _fontSize = 12f;
       AdjustAllControls();
     }
 
@@ -697,12 +700,13 @@ namespace CountWordsPerLanguage
       {
         if (isFirstControl)
         {
+          control.Font = new Font(new FontFamily("Verdana"), _fontSize);
           isFirstControl = false;
         }
         else
         {
-          control.Left = position + 10;
-          position += control.Width;
+          control.Left = position + 25;
+          position += control.Width + 10;
           control.Font = new Font(new FontFamily("Verdana"), _fontSize);
         }
       }
@@ -717,12 +721,12 @@ namespace CountWordsPerLanguage
 
       if (MediumToolStripMenuItem.Checked)
       {
-        return 12;
+        return 11;
       }
 
       if (LargeToolStripMenuItem.Checked)
       {
-        return 14;
+        return 12;
       }
 
       return 10;
@@ -732,6 +736,12 @@ namespace CountWordsPerLanguage
     {
       AdjustControls(labelChooseLanguage, comboBoxLanguage, buttonCountWords, buttonClear);
       AdjustControls(labelWordsCount, labelCharacterCount);
+      AdjustControlsTextBased(textBoxSource);
+    }
+
+    private void AdjustControlsTextBased(Control textBox)
+    {
+      textBox.Font = new Font(new FontFamily("Verdana"), _fontSize);
     }
 
     private void buttonCountWords_Click(object sender, EventArgs e)
