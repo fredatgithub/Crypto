@@ -65,14 +65,19 @@
       this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.tabControlMain = new System.Windows.Forms.TabControl();
+      this.tabPageAdd = new System.Windows.Forms.TabPage();
+      this.buttonClear = new System.Windows.Forms.Button();
+      this.labelCharacterCount = new System.Windows.Forms.Label();
       this.textBoxSource = new System.Windows.Forms.TextBox();
+      this.labelWordsCount = new System.Windows.Forms.Label();
       this.labelChooseLanguage = new System.Windows.Forms.Label();
       this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
       this.buttonCountWords = new System.Windows.Forms.Button();
-      this.buttonClear = new System.Windows.Forms.Button();
-      this.labelWordsCount = new System.Windows.Forms.Label();
-      this.labelCharacterCount = new System.Windows.Forms.Label();
+      this.tabPageStatistics = new System.Windows.Forms.TabPage();
       this.menuStrip1.SuspendLayout();
+      this.tabControlMain.SuspendLayout();
+      this.tabPageAdd.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -88,7 +93,7 @@
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-      this.menuStrip1.Size = new System.Drawing.Size(687, 28);
+      this.menuStrip1.Size = new System.Drawing.Size(1132, 28);
       this.menuStrip1.TabIndex = 1;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -308,21 +313,21 @@
       this.SmallToolStripMenuItem.Checked = true;
       this.SmallToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
       this.SmallToolStripMenuItem.Name = "SmallToolStripMenuItem";
-      this.SmallToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
+      this.SmallToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
       this.SmallToolStripMenuItem.Text = "Petit";
       this.SmallToolStripMenuItem.Click += new System.EventHandler(this.SmallToolStripMenuItem_Click);
       // 
       // MediumToolStripMenuItem
       // 
       this.MediumToolStripMenuItem.Name = "MediumToolStripMenuItem";
-      this.MediumToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
+      this.MediumToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
       this.MediumToolStripMenuItem.Text = "Moyen";
       this.MediumToolStripMenuItem.Click += new System.EventHandler(this.MediumToolStripMenuItem_Click);
       // 
       // LargeToolStripMenuItem
       // 
       this.LargeToolStripMenuItem.Name = "LargeToolStripMenuItem";
-      this.LargeToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
+      this.LargeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
       this.LargeToolStripMenuItem.Text = "Grand";
       this.LargeToolStripMenuItem.Click += new System.EventHandler(this.LargeToolStripMenuItem_Click);
       // 
@@ -368,94 +373,125 @@
       this.aboutToolStripMenuItem.Text = "À &propos de...";
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
       // 
+      // tabControlMain
+      // 
+      this.tabControlMain.Controls.Add(this.tabPageAdd);
+      this.tabControlMain.Controls.Add(this.tabPageStatistics);
+      this.tabControlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tabControlMain.Location = new System.Drawing.Point(0, 28);
+      this.tabControlMain.Name = "tabControlMain";
+      this.tabControlMain.SelectedIndex = 0;
+      this.tabControlMain.Size = new System.Drawing.Size(1132, 464);
+      this.tabControlMain.TabIndex = 9;
+      // 
+      // tabPageAdd
+      // 
+      this.tabPageAdd.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.tabPageAdd.Controls.Add(this.buttonClear);
+      this.tabPageAdd.Controls.Add(this.labelCharacterCount);
+      this.tabPageAdd.Controls.Add(this.textBoxSource);
+      this.tabPageAdd.Controls.Add(this.labelWordsCount);
+      this.tabPageAdd.Controls.Add(this.labelChooseLanguage);
+      this.tabPageAdd.Controls.Add(this.comboBoxLanguage);
+      this.tabPageAdd.Controls.Add(this.buttonCountWords);
+      this.tabPageAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tabPageAdd.Location = new System.Drawing.Point(4, 25);
+      this.tabPageAdd.Name = "tabPageAdd";
+      this.tabPageAdd.Padding = new System.Windows.Forms.Padding(3);
+      this.tabPageAdd.Size = new System.Drawing.Size(1124, 435);
+      this.tabPageAdd.TabIndex = 1;
+      this.tabPageAdd.Text = "Add";
+      this.tabPageAdd.UseVisualStyleBackColor = true;
+      // 
+      // buttonClear
+      // 
+      this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonClear.Location = new System.Drawing.Point(524, 17);
+      this.buttonClear.Name = "buttonClear";
+      this.buttonClear.Size = new System.Drawing.Size(117, 31);
+      this.buttonClear.TabIndex = 26;
+      this.buttonClear.Text = "Clear";
+      this.buttonClear.UseVisualStyleBackColor = true;
+      // 
+      // labelCharacterCount
+      // 
+      this.labelCharacterCount.AutoSize = true;
+      this.labelCharacterCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelCharacterCount.Location = new System.Drawing.Point(211, 53);
+      this.labelCharacterCount.Name = "labelCharacterCount";
+      this.labelCharacterCount.Size = new System.Drawing.Size(177, 20);
+      this.labelCharacterCount.TabIndex = 30;
+      this.labelCharacterCount.Text = "Number of characters:";
+      // 
       // textBoxSource
       // 
       this.textBoxSource.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.textBoxSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBoxSource.Location = new System.Drawing.Point(29, 128);
+      this.textBoxSource.Location = new System.Drawing.Point(18, 87);
       this.textBoxSource.Multiline = true;
       this.textBoxSource.Name = "textBoxSource";
       this.textBoxSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-      this.textBoxSource.Size = new System.Drawing.Size(634, 338);
-      this.textBoxSource.TabIndex = 2;
+      this.textBoxSource.Size = new System.Drawing.Size(1090, 360);
+      this.textBoxSource.TabIndex = 18;
       this.textBoxSource.Text = "azAZ";
-      this.textBoxSource.TextChanged += new System.EventHandler(this.textBoxSource_TextChanged);
+      // 
+      // labelWordsCount
+      // 
+      this.labelWordsCount.AutoSize = true;
+      this.labelWordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelWordsCount.Location = new System.Drawing.Point(14, 53);
+      this.labelWordsCount.Name = "labelWordsCount";
+      this.labelWordsCount.Size = new System.Drawing.Size(142, 20);
+      this.labelWordsCount.TabIndex = 28;
+      this.labelWordsCount.Text = "Number of words:";
       // 
       // labelChooseLanguage
       // 
       this.labelChooseLanguage.AutoSize = true;
       this.labelChooseLanguage.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelChooseLanguage.Location = new System.Drawing.Point(25, 62);
+      this.labelChooseLanguage.Location = new System.Drawing.Point(14, 21);
       this.labelChooseLanguage.Name = "labelChooseLanguage";
       this.labelChooseLanguage.Size = new System.Drawing.Size(172, 20);
-      this.labelChooseLanguage.TabIndex = 3;
+      this.labelChooseLanguage.TabIndex = 20;
       this.labelChooseLanguage.Text = "Choose a language";
       // 
       // comboBoxLanguage
       // 
       this.comboBoxLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.comboBoxLanguage.FormattingEnabled = true;
-      this.comboBoxLanguage.Location = new System.Drawing.Point(226, 59);
+      this.comboBoxLanguage.Location = new System.Drawing.Point(215, 18);
       this.comboBoxLanguage.Name = "comboBoxLanguage";
       this.comboBoxLanguage.Size = new System.Drawing.Size(157, 28);
-      this.comboBoxLanguage.TabIndex = 4;
+      this.comboBoxLanguage.TabIndex = 22;
       // 
       // buttonCountWords
       // 
       this.buttonCountWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonCountWords.Location = new System.Drawing.Point(389, 57);
+      this.buttonCountWords.Location = new System.Drawing.Point(378, 16);
       this.buttonCountWords.Name = "buttonCountWords";
       this.buttonCountWords.Size = new System.Drawing.Size(140, 31);
-      this.buttonCountWords.TabIndex = 5;
+      this.buttonCountWords.TabIndex = 24;
       this.buttonCountWords.Text = "Count";
       this.buttonCountWords.UseVisualStyleBackColor = true;
-      this.buttonCountWords.Click += new System.EventHandler(this.buttonCountWords_Click);
       // 
-      // buttonClear
+      // tabPageStatistics
       // 
-      this.buttonClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonClear.Location = new System.Drawing.Point(535, 58);
-      this.buttonClear.Name = "buttonClear";
-      this.buttonClear.Size = new System.Drawing.Size(117, 31);
-      this.buttonClear.TabIndex = 6;
-      this.buttonClear.Text = "Clear";
-      this.buttonClear.UseVisualStyleBackColor = true;
-      this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-      // 
-      // labelWordsCount
-      // 
-      this.labelWordsCount.AutoSize = true;
-      this.labelWordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelWordsCount.Location = new System.Drawing.Point(25, 94);
-      this.labelWordsCount.Name = "labelWordsCount";
-      this.labelWordsCount.Size = new System.Drawing.Size(142, 20);
-      this.labelWordsCount.TabIndex = 7;
-      this.labelWordsCount.Text = "Number of words:";
-      // 
-      // labelCharacterCount
-      // 
-      this.labelCharacterCount.AutoSize = true;
-      this.labelCharacterCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelCharacterCount.Location = new System.Drawing.Point(222, 94);
-      this.labelCharacterCount.Name = "labelCharacterCount";
-      this.labelCharacterCount.Size = new System.Drawing.Size(177, 20);
-      this.labelCharacterCount.TabIndex = 8;
-      this.labelCharacterCount.Text = "Number of characters:";
+      this.tabPageStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tabPageStatistics.Location = new System.Drawing.Point(4, 25);
+      this.tabPageStatistics.Name = "tabPageStatistics";
+      this.tabPageStatistics.Size = new System.Drawing.Size(1124, 435);
+      this.tabPageStatistics.TabIndex = 2;
+      this.tabPageStatistics.Text = "Letter statistics";
+      this.tabPageStatistics.UseVisualStyleBackColor = true;
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(687, 492);
-      this.Controls.Add(this.labelCharacterCount);
-      this.Controls.Add(this.labelWordsCount);
-      this.Controls.Add(this.buttonClear);
-      this.Controls.Add(this.buttonCountWords);
-      this.Controls.Add(this.comboBoxLanguage);
-      this.Controls.Add(this.labelChooseLanguage);
-      this.Controls.Add(this.textBoxSource);
+      this.ClientSize = new System.Drawing.Size(1132, 492);
+      this.Controls.Add(this.tabControlMain);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
       this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -466,6 +502,9 @@
       this.Load += new System.EventHandler(this.FormMain_Load);
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
+      this.tabControlMain.ResumeLayout(false);
+      this.tabPageAdd.ResumeLayout(false);
+      this.tabPageAdd.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -510,12 +549,15 @@
     private System.Windows.Forms.ToolStripMenuItem SmallToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem MediumToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem LargeToolStripMenuItem;
+    private System.Windows.Forms.TabControl tabControlMain;
+    private System.Windows.Forms.TabPage tabPageAdd;
+    private System.Windows.Forms.Button buttonClear;
+    private System.Windows.Forms.Label labelCharacterCount;
     private System.Windows.Forms.TextBox textBoxSource;
+    private System.Windows.Forms.Label labelWordsCount;
     private System.Windows.Forms.Label labelChooseLanguage;
     private System.Windows.Forms.ComboBox comboBoxLanguage;
     private System.Windows.Forms.Button buttonCountWords;
-    private System.Windows.Forms.Button buttonClear;
-    private System.Windows.Forms.Label labelWordsCount;
-    private System.Windows.Forms.Label labelCharacterCount;
+    private System.Windows.Forms.TabPage tabPageStatistics;
   }
 }
