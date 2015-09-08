@@ -9,7 +9,7 @@ It's all about password
 [![Windows build] (https://img.shields.io/badge/Windows build-Passed-brightgreen.svg)] (https://github.com/fredatgithub/Crypto#Build Status)
 [![Tests status] (https://img.shields.io/badge/Unit Tests-Passed-brightgreen.svg)] (https://github.com/fredatgithub//Crypto#Build status)
 [![Platform status] (https://img.shields.io/badge/Platform X86-Passed-brightgreen.svg)] (https://github.com/fredatgithub/Crypto#Build Status)
-[![Release status] (https://img.shields.io/badge/Release-0.1-brightgreen.svg)] (https://github.com/fredatgithub/Crypto#Build Status)
+[![Release status] (https://img.shields.io/badge/Release-1.1-brightgreen.svg)] (https://github.com/fredatgithub/Crypto#Build Status)
 
 [![Linux status] (https://img.shields.io/badge/Linux-none-red.svg)] (https://github.com/fredatgithub/Crypto#Build Status)
 [![NuGet status] (https://img.shields.io/badge/NuGet-none-red.svg)] (https://github.com/fredatgithub/Crypto#Build Status)
