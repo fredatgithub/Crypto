@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text;
 using System.Xml.Serialization;
 
@@ -8,61 +7,61 @@ namespace CountWordsPerLanguage
 {
   public class LetterFrequency
   {
-    [XmlElement]
+    [XmlElement("Language")]
     public string Language { get; set; }
-    [XmlElement]
+    [XmlElement("FileHash")]
     public int FileHash { get; set; }
-    [XmlElement]
+    [XmlElement("LetterA")]
     public int LetterA { get; set; }
-    [XmlElement]
+    [XmlElement("LetterB")]
     public int LetterB { get; set; }
-    [XmlElement]
+    [XmlElement("LetterC")]
     public int LetterC { get; set; }
-    [XmlElement]
+    [XmlElement("LetterD")]
     public int LetterD { get; set; }
-    [XmlElement]
+    [XmlElement("LetterE")]
     public int LetterE { get; set; }
-    [XmlElement]
+    [XmlElement("LetterF")]
     public int LetterF { get; set; }
-    [XmlElement]
+    [XmlElement("LetterG")]
     public int LetterG { get; set; }
-    [XmlElement]
+    [XmlElement("LetterH")]
     public int LetterH { get; set; }
-    [XmlElement]
+    [XmlElement("LetterI")]
     public int LetterI { get; set; }
-    [XmlElement]
+    [XmlElement("LetterJ")]
     public int LetterJ { get; set; }
-    [XmlElement]
+    [XmlElement("LetterK")]
     public int LetterK { get; set; }
-    [XmlElement]
+    [XmlElement("LetterL")]
     public int LetterL { get; set; }
-    [XmlElement]
+    [XmlElement("LetterM")]
     public int LetterM { get; set; }
-    [XmlElement]
+    [XmlElement("LetterN")]
     public int LetterN { get; set; }
-    [XmlElement]
+    [XmlElement("LetterO")]
     public int LetterO { get; set; }
-    [XmlElement]
+    [XmlElement("LetterP")]
     public int LetterP { get; set; }
-    [XmlElement]
+    [XmlElement("LetterQ")]
     public int LetterQ { get; set; }
-    [XmlElement]
+    [XmlElement("LetterR")]
     public int LetterR { get; set; }
-    [XmlElement]
+    [XmlElement("LetterS")]
     public int LetterS { get; set; }
-    [XmlElement]
+    [XmlElement("LetterT")]
     public int LetterT { get; set; }
-    [XmlElement]
+    [XmlElement("LetterU")]
     public int LetterU { get; set; }
-    [XmlElement]
+    [XmlElement("LetterV")]
     public int LetterV { get; set; }
-    [XmlElement]
+    [XmlElement("LetterW")]
     public int LetterW { get; set; }
-    [XmlElement]
+    [XmlElement("LetterX")]
     public int LetterX { get; set; }
-    [XmlElement]
+    [XmlElement("LetterY")]
     public int LetterY { get; set; }
-    [XmlElement]
+    [XmlElement("LetterZ")]
     public int LetterZ { get; set; }
 
     public LetterFrequency() // constructor without parameters required by XML Serialization
@@ -111,31 +110,6 @@ namespace CountWordsPerLanguage
       var fileHash2 = SHA512.Create();
       fileHash2.ComputeHash(buffer);
       FileHash = fileHash2.GetHashCode();
-    }
-
-    private string RsaEncryption(string clearData)
-    {
-      CspParameters param = new CspParameters {KeyContainerName = "MyKeyContainer"};
-      using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(param))
-      {
-        string plainText = clearData;
-        byte[] plainData = Encoding.Default.GetBytes(plainText);
-        byte[] encryptedData = rsa.Encrypt(plainData, false);
-        string encryptedString = Convert.ToBase64String(encryptedData);
-        return encryptedString;
-      }
-    }
-
-    private string RsaDecryption(string encryptedData)
-    {
-      CspParameters param = new CspParameters {KeyContainerName = "MyKeyContainer"};
-      using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(param))
-      {
-        byte[] encryptedBytes = Convert.FromBase64String(encryptedData);
-        byte[] decryptedData = rsa.Decrypt(encryptedBytes, false);
-        string plainData = Encoding.Default.GetString(decryptedData);
-        return plainData;
-      }
     }
   }
 }
