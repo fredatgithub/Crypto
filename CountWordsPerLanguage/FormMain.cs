@@ -21,6 +21,7 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -42,6 +43,7 @@ namespace CountWordsPerLanguage
     readonly Dictionary<string, string> _languageDicoEn = new Dictionary<string, string>();
     readonly Dictionary<string, string> _languageDicoFr = new Dictionary<string, string>();
     private string _currentLanguage = "english";
+    private float _fontSize = 10;
 
     private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -662,6 +664,7 @@ namespace CountWordsPerLanguage
     {
       UncheckAllOptions();
       SmallToolStripMenuItem.Checked = true;
+      _fontSize = 10f;
       AdjustAllControls();
     }
 
@@ -669,6 +672,7 @@ namespace CountWordsPerLanguage
     {
       UncheckAllOptions();
       MediumToolStripMenuItem.Checked = true;
+      _fontSize = 12f;
       AdjustAllControls();
     }
 
@@ -676,10 +680,11 @@ namespace CountWordsPerLanguage
     {
       UncheckAllOptions();
       LargeToolStripMenuItem.Checked = true;
+      _fontSize = 14f;
       AdjustAllControls();
     }
 
-    private static void AdjustControls(params Control[] listOfControls)
+    private void AdjustControls(params Control[] listOfControls)
     {
       if (listOfControls.Length == 0)
       {
@@ -698,13 +703,35 @@ namespace CountWordsPerLanguage
         {
           control.Left = position + 10;
           position += control.Width;
+          control.Font = new Font(new FontFamily("Verdana"), _fontSize);
         }
       }
     }
 
-    private static void AdjustAllControls()
+    private float GetFontSize()
     {
-      AdjustControls();
+      if (SmallToolStripMenuItem.Checked)
+      {
+        return 10;
+      }
+
+      if (MediumToolStripMenuItem.Checked)
+      {
+        return 12;
+      }
+
+      if (LargeToolStripMenuItem.Checked)
+      {
+        return 14;
+      }
+
+      return 10;
+    }
+
+    private void AdjustAllControls()
+    {
+      AdjustControls(labelChooseLanguage, comboBoxLanguage, buttonCountWords, buttonClear);
+      AdjustControls(labelWordsCount, labelCharacterCount);
     }
 
     private void buttonCountWords_Click(object sender, EventArgs e)

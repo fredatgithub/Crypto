@@ -386,10 +386,10 @@
       // labelChooseLanguage
       // 
       this.labelChooseLanguage.AutoSize = true;
-      this.labelChooseLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelChooseLanguage.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelChooseLanguage.Location = new System.Drawing.Point(25, 62);
       this.labelChooseLanguage.Name = "labelChooseLanguage";
-      this.labelChooseLanguage.Size = new System.Drawing.Size(152, 20);
+      this.labelChooseLanguage.Size = new System.Drawing.Size(172, 20);
       this.labelChooseLanguage.TabIndex = 3;
       this.labelChooseLanguage.Text = "Choose a language";
       // 
