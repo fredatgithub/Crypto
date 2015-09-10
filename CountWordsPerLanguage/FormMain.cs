@@ -338,6 +338,7 @@ namespace CountWordsPerLanguage
       Left = Settings.Default.WindowLeft < 0 ? 0 : Settings.Default.WindowLeft;
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       comboBoxLanguage.SelectedIndex = Settings.Default.comboBoxLanguage;
+      comboBoxStatChooseLanguage.SelectedIndex = Settings.Default.comboBoxStatChooseLanguage;
       _fontSize = Settings.Default._fontSize;
     }
 
@@ -351,6 +352,7 @@ namespace CountWordsPerLanguage
       Settings.Default.DisplayToolStripMenuItem = GetDisplayOption();
       Settings.Default.comboBoxLanguage = comboBoxLanguage.SelectedIndex;
       Settings.Default._fontSize = _fontSize;
+      Settings.Default.comboBoxStatChooseLanguage = comboBoxStatChooseLanguage.SelectedIndex;
       Settings.Default.Save();
     }
 
@@ -367,14 +369,6 @@ namespace CountWordsPerLanguage
       }
 
       return LargeToolStripMenuItem.Checked ? "Large" : string.Empty;
-
-      // incase of any other size options:
-      //if (LargeToolStripMenuItem.Checked)
-      //{
-      //  return "Large";
-      //}
-
-      //return string.Empty;
     }
 
     private void SetDisplayOption(string option)
@@ -466,7 +460,8 @@ namespace CountWordsPerLanguage
           labelWordsCount.Text = _languageDicoEn["Number of words"];
           labelCharacterCount.Text = _languageDicoEn["Number of characters"];
           textBoxSource_TextChanged(null, null);
-          
+          labelStatChooseLanguage.Text = _languageDicoEn["Choose a language"];
+          buttonStatLoadResult.Text = _languageDicoEn["Load results"];
           _currentLanguage = "English";
           break;
         case "French":
@@ -508,6 +503,8 @@ namespace CountWordsPerLanguage
           labelWordsCount.Text = _languageDicoFr["Number of words"];
           labelCharacterCount.Text = _languageDicoFr["Number of characters"];
           textBoxSource_TextChanged(null, null);
+          labelStatChooseLanguage.Text = _languageDicoFr["Choose a language"];
+          buttonStatLoadResult.Text = _languageDicoFr["Load results"];
           _currentLanguage = "French";
           break;
         default:

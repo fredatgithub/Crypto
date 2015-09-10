@@ -154,5 +154,17 @@ namespace CountWordsPerLanguage.Properties {
                 this["_fontSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int comboBoxStatChooseLanguage {
+            get {
+                return ((int)(this["comboBoxStatChooseLanguage"]));
+            }
+            set {
+                this["comboBoxStatChooseLanguage"] = value;
+            }
+        }
     }
 }

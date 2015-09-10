@@ -209,11 +209,11 @@
       <englishValue>Number of characters</englishValue>
       <frenchValue>Nombre de caractères</frenchValue>
     </term>
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
+    <term>
+      <name>Load results</name>
+      <englishValue>Load results</englishValue>
+      <frenchValue>Charger les résultats</frenchValue>
+    </term>
     <!--<term>
       <name></name>
       <englishValue></englishValue>

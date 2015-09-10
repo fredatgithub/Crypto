@@ -75,9 +75,13 @@
       this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
       this.buttonCountWords = new System.Windows.Forms.Button();
       this.tabPageStatistics = new System.Windows.Forms.TabPage();
+      this.labelStatChooseLanguage = new System.Windows.Forms.Label();
+      this.comboBoxStatChooseLanguage = new System.Windows.Forms.ComboBox();
+      this.buttonStatLoadResult = new System.Windows.Forms.Button();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageAdd.SuspendLayout();
+      this.tabPageStatistics.SuspendLayout();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -313,21 +317,21 @@
       this.SmallToolStripMenuItem.Checked = true;
       this.SmallToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
       this.SmallToolStripMenuItem.Name = "SmallToolStripMenuItem";
-      this.SmallToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+      this.SmallToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
       this.SmallToolStripMenuItem.Text = "Petit";
       this.SmallToolStripMenuItem.Click += new System.EventHandler(this.SmallToolStripMenuItem_Click);
       // 
       // MediumToolStripMenuItem
       // 
       this.MediumToolStripMenuItem.Name = "MediumToolStripMenuItem";
-      this.MediumToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+      this.MediumToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
       this.MediumToolStripMenuItem.Text = "Moyen";
       this.MediumToolStripMenuItem.Click += new System.EventHandler(this.MediumToolStripMenuItem_Click);
       // 
       // LargeToolStripMenuItem
       // 
       this.LargeToolStripMenuItem.Name = "LargeToolStripMenuItem";
-      this.LargeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+      this.LargeToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
       this.LargeToolStripMenuItem.Text = "Grand";
       this.LargeToolStripMenuItem.Click += new System.EventHandler(this.LargeToolStripMenuItem_Click);
       // 
@@ -478,6 +482,9 @@
       // 
       // tabPageStatistics
       // 
+      this.tabPageStatistics.Controls.Add(this.labelStatChooseLanguage);
+      this.tabPageStatistics.Controls.Add(this.comboBoxStatChooseLanguage);
+      this.tabPageStatistics.Controls.Add(this.buttonStatLoadResult);
       this.tabPageStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.tabPageStatistics.Location = new System.Drawing.Point(4, 25);
       this.tabPageStatistics.Name = "tabPageStatistics";
@@ -485,6 +492,35 @@
       this.tabPageStatistics.TabIndex = 2;
       this.tabPageStatistics.Text = "Letter statistics";
       this.tabPageStatistics.UseVisualStyleBackColor = true;
+      // 
+      // labelStatChooseLanguage
+      // 
+      this.labelStatChooseLanguage.AutoSize = true;
+      this.labelStatChooseLanguage.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelStatChooseLanguage.Location = new System.Drawing.Point(24, 28);
+      this.labelStatChooseLanguage.Name = "labelStatChooseLanguage";
+      this.labelStatChooseLanguage.Size = new System.Drawing.Size(172, 20);
+      this.labelStatChooseLanguage.TabIndex = 25;
+      this.labelStatChooseLanguage.Text = "Choose a language";
+      // 
+      // comboBoxStatChooseLanguage
+      // 
+      this.comboBoxStatChooseLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.comboBoxStatChooseLanguage.FormattingEnabled = true;
+      this.comboBoxStatChooseLanguage.Location = new System.Drawing.Point(225, 25);
+      this.comboBoxStatChooseLanguage.Name = "comboBoxStatChooseLanguage";
+      this.comboBoxStatChooseLanguage.Size = new System.Drawing.Size(157, 28);
+      this.comboBoxStatChooseLanguage.TabIndex = 26;
+      // 
+      // buttonStatLoadResult
+      // 
+      this.buttonStatLoadResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonStatLoadResult.Location = new System.Drawing.Point(388, 23);
+      this.buttonStatLoadResult.Name = "buttonStatLoadResult";
+      this.buttonStatLoadResult.Size = new System.Drawing.Size(140, 31);
+      this.buttonStatLoadResult.TabIndex = 27;
+      this.buttonStatLoadResult.Text = "Load results";
+      this.buttonStatLoadResult.UseVisualStyleBackColor = true;
       // 
       // FormMain
       // 
@@ -505,6 +541,8 @@
       this.tabControlMain.ResumeLayout(false);
       this.tabPageAdd.ResumeLayout(false);
       this.tabPageAdd.PerformLayout();
+      this.tabPageStatistics.ResumeLayout(false);
+      this.tabPageStatistics.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -559,5 +597,8 @@
     private System.Windows.Forms.ComboBox comboBoxLanguage;
     private System.Windows.Forms.Button buttonCountWords;
     private System.Windows.Forms.TabPage tabPageStatistics;
+    private System.Windows.Forms.Label labelStatChooseLanguage;
+    private System.Windows.Forms.ComboBox comboBoxStatChooseLanguage;
+    private System.Windows.Forms.Button buttonStatLoadResult;
   }
 }
