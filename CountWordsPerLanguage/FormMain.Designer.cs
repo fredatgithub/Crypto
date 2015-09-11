@@ -78,10 +78,13 @@
       this.labelStatChooseLanguage = new System.Windows.Forms.Label();
       this.comboBoxStatChooseLanguage = new System.Windows.Forms.ComboBox();
       this.buttonStatLoadResult = new System.Windows.Forms.Button();
+      this.listBox1 = new System.Windows.Forms.ListBox();
+      this.dataGridView1 = new System.Windows.Forms.DataGridView();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageAdd.SuspendLayout();
       this.tabPageStatistics.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -482,6 +485,8 @@
       // 
       // tabPageStatistics
       // 
+      this.tabPageStatistics.Controls.Add(this.dataGridView1);
+      this.tabPageStatistics.Controls.Add(this.listBox1);
       this.tabPageStatistics.Controls.Add(this.labelStatChooseLanguage);
       this.tabPageStatistics.Controls.Add(this.comboBoxStatChooseLanguage);
       this.tabPageStatistics.Controls.Add(this.buttonStatLoadResult);
@@ -522,6 +527,28 @@
       this.buttonStatLoadResult.Text = "Load results";
       this.buttonStatLoadResult.UseVisualStyleBackColor = true;
       // 
+      // listBox1
+      // 
+      this.listBox1.FormattingEnabled = true;
+      this.listBox1.ItemHeight = 20;
+      this.listBox1.Location = new System.Drawing.Point(28, 76);
+      this.listBox1.Name = "listBox1";
+      this.listBox1.Size = new System.Drawing.Size(212, 284);
+      this.listBox1.TabIndex = 28;
+      // 
+      // dataGridView1
+      // 
+      this.dataGridView1.AllowUserToAddRows = false;
+      this.dataGridView1.AllowUserToDeleteRows = false;
+      this.dataGridView1.AllowUserToOrderColumns = true;
+      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridView1.Location = new System.Drawing.Point(273, 76);
+      this.dataGridView1.Name = "dataGridView1";
+      this.dataGridView1.ReadOnly = true;
+      this.dataGridView1.RowTemplate.Height = 24;
+      this.dataGridView1.Size = new System.Drawing.Size(650, 284);
+      this.dataGridView1.TabIndex = 29;
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -543,6 +570,7 @@
       this.tabPageAdd.PerformLayout();
       this.tabPageStatistics.ResumeLayout(false);
       this.tabPageStatistics.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -600,5 +628,7 @@
     private System.Windows.Forms.Label labelStatChooseLanguage;
     private System.Windows.Forms.ComboBox comboBoxStatChooseLanguage;
     private System.Windows.Forms.Button buttonStatLoadResult;
+    private System.Windows.Forms.DataGridView dataGridView1;
+    private System.Windows.Forms.ListBox listBox1;
   }
 }
