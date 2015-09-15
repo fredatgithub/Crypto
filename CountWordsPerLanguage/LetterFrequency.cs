@@ -1,15 +1,21 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 using System.Xml.Serialization;
 
 namespace CountWordsPerLanguage
 {
+  [XmlRoot("Root")]
   public class LetterFrequency
   {
     [XmlElement("Language")]
     public string Language { get; set; }
     [XmlElement("FileHash")]
     public int FileHash { get; set; }
+    [XmlElement("DocName")]
+    public string DocName { get; set; }
+    [XmlElement("DateTimeProcessed")]
+    public DateTime DateTimeProcessed { get; set; }
     [XmlElement("LetterA")]
     public int LetterA { get; set; }
     [XmlElement("LetterB")]
@@ -66,11 +72,14 @@ namespace CountWordsPerLanguage
     public LetterFrequency() // constructor without parameters required by XML Serialization
     {
       Language = "english";
+      DateTimeProcessed = DateTime.Now;
+      DocName = "untitled Name";
     }
 
-    public LetterFrequency(string language)
+    public LetterFrequency(string language = "english", string docName = "Untitled Doc Name")
     {
       Language = language;
+      DocName = docName;
     }
 
     public void FeedLetters(int[] letterArray)

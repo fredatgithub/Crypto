@@ -776,7 +776,8 @@ namespace CountWordsPerLanguage
     {
       if (!File.Exists(Settings.Default.LanguagePerCountryFileName))
       {
-        CreateFile(Settings.Default.LanguagePerCountryFileName);
+        const string minimumText = "<?xml version=\"1.0\" encoding=\"utf - 8\"?>";
+        CreateXmlFile(Settings.Default.LanguagePerCountryFileName, minimumText);
       }
       
       var serializer = new XmlSerializer(typeof(LetterFrequency));
@@ -784,7 +785,13 @@ namespace CountWordsPerLanguage
       {
         serializer.Serialize(writer, letterFrequency);
       }
+    }
 
+    private static void CreateXmlFile(string fileName, string minimumText)
+    {
+      StreamWriter sw = new StreamWriter(fileName, false, Encoding.UTF8);
+      sw.WriteLine(minimumText);
+      sw.Close();
     }
 
     private static int[] CountLetters2(string text)
@@ -895,6 +902,21 @@ namespace CountWordsPerLanguage
       return text.Length;
     }
 
+    private static LetterFrequencyList LoadFromXml(string filePath)
+    {
+      if (!File.Exists(filePath))
+      {
+        CreateFile(filePath);
+      }
+
+      XmlSerializer deserializer = new XmlSerializer(typeof(LetterFrequencyList));
+      TextReader reader = new StreamReader(filePath);
+      object obj = deserializer.Deserialize(reader);
+      LetterFrequencyList xmlData = (LetterFrequencyList)obj;
+      reader.Close();
+      return xmlData;
+    }
+
     private void buttonStatLoadResult_Click(object sender, EventArgs e)
     {
       if (comboBoxStatChooseLanguage.SelectedIndex == -1)
@@ -904,6 +926,8 @@ namespace CountWordsPerLanguage
         return;
       }
 
+      // deserialize the xml file into class intances
+      var statistics = LoadFromXml(Settings.Default.LetterCountPerLanguageFileName);
 
     }
   }
