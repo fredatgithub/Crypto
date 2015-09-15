@@ -76,13 +76,13 @@
       this.buttonCountWords = new System.Windows.Forms.Button();
       this.tabPageStatistics = new System.Windows.Forms.TabPage();
       this.dataGridView1 = new System.Windows.Forms.DataGridView();
+      this.ColumnLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ColumnLetter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ColumnFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.listBox1 = new System.Windows.Forms.ListBox();
       this.labelStatChooseLanguage = new System.Windows.Forms.Label();
       this.comboBoxStatChooseLanguage = new System.Windows.Forms.ComboBox();
       this.buttonStatLoadResult = new System.Windows.Forms.Button();
-      this.ColumnLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.ColumnLetter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.ColumnFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageAdd.SuspendLayout();
@@ -422,6 +422,7 @@
       this.buttonClear.TabIndex = 26;
       this.buttonClear.Text = "Clear";
       this.buttonClear.UseVisualStyleBackColor = true;
+      this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
       // 
       // labelCharacterCount
       // 
@@ -446,6 +447,7 @@
       this.textBoxSource.Size = new System.Drawing.Size(1090, 360);
       this.textBoxSource.TabIndex = 18;
       this.textBoxSource.Text = "azAZ";
+      this.textBoxSource.TextChanged += new System.EventHandler(this.textBoxSource_TextChanged);
       // 
       // labelWordsCount
       // 
@@ -485,6 +487,7 @@
       this.buttonCountWords.TabIndex = 24;
       this.buttonCountWords.Text = "Count";
       this.buttonCountWords.UseVisualStyleBackColor = true;
+      this.buttonCountWords.Click += new System.EventHandler(this.buttonCountWords_Click);
       // 
       // tabPageStatistics
       // 
@@ -520,6 +523,24 @@
       this.dataGridView1.RowTemplate.Height = 24;
       this.dataGridView1.Size = new System.Drawing.Size(823, 336);
       this.dataGridView1.TabIndex = 29;
+      // 
+      // ColumnLanguage
+      // 
+      this.ColumnLanguage.HeaderText = "Language";
+      this.ColumnLanguage.Name = "ColumnLanguage";
+      this.ColumnLanguage.ReadOnly = true;
+      // 
+      // ColumnLetter
+      // 
+      this.ColumnLetter.HeaderText = "Letter";
+      this.ColumnLetter.Name = "ColumnLetter";
+      this.ColumnLetter.ReadOnly = true;
+      // 
+      // ColumnFrequency
+      // 
+      this.ColumnFrequency.HeaderText = "Frequency";
+      this.ColumnFrequency.Name = "ColumnFrequency";
+      this.ColumnFrequency.ReadOnly = true;
       // 
       // listBox1
       // 
@@ -561,24 +582,6 @@
       this.buttonStatLoadResult.Text = "Load results";
       this.buttonStatLoadResult.UseVisualStyleBackColor = true;
       this.buttonStatLoadResult.Click += new System.EventHandler(this.buttonStatLoadResult_Click);
-      // 
-      // ColumnLanguage
-      // 
-      this.ColumnLanguage.HeaderText = "Language";
-      this.ColumnLanguage.Name = "ColumnLanguage";
-      this.ColumnLanguage.ReadOnly = true;
-      // 
-      // ColumnLetter
-      // 
-      this.ColumnLetter.HeaderText = "Letter";
-      this.ColumnLetter.Name = "ColumnLetter";
-      this.ColumnLetter.ReadOnly = true;
-      // 
-      // ColumnFrequency
-      // 
-      this.ColumnFrequency.HeaderText = "Frequency";
-      this.ColumnFrequency.Name = "ColumnFrequency";
-      this.ColumnFrequency.ReadOnly = true;
       // 
       // FormMain
       // 

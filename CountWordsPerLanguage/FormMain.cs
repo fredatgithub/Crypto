@@ -897,6 +897,13 @@ namespace CountWordsPerLanguage
 
     private void buttonStatLoadResult_Click(object sender, EventArgs e)
     {
+      if (comboBoxStatChooseLanguage.SelectedIndex == -1)
+      {
+        DisplayMessage(Translate("You haven't choose a language"), Translate("No Language choosen"), MessageBoxButtons.OK);
+        comboBoxStatChooseLanguage.Focus();
+        return;
+      }
+
 
     }
   }
