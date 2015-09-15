@@ -75,11 +75,14 @@
       this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
       this.buttonCountWords = new System.Windows.Forms.Button();
       this.tabPageStatistics = new System.Windows.Forms.TabPage();
+      this.dataGridView1 = new System.Windows.Forms.DataGridView();
+      this.listBox1 = new System.Windows.Forms.ListBox();
       this.labelStatChooseLanguage = new System.Windows.Forms.Label();
       this.comboBoxStatChooseLanguage = new System.Windows.Forms.ComboBox();
       this.buttonStatLoadResult = new System.Windows.Forms.Button();
-      this.listBox1 = new System.Windows.Forms.ListBox();
-      this.dataGridView1 = new System.Windows.Forms.DataGridView();
+      this.ColumnLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ColumnLetter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ColumnFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageAdd.SuspendLayout();
@@ -498,6 +501,37 @@
       this.tabPageStatistics.Text = "Letter statistics";
       this.tabPageStatistics.UseVisualStyleBackColor = true;
       // 
+      // dataGridView1
+      // 
+      this.dataGridView1.AllowUserToAddRows = false;
+      this.dataGridView1.AllowUserToDeleteRows = false;
+      this.dataGridView1.AllowUserToOrderColumns = true;
+      this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnLanguage,
+            this.ColumnLetter,
+            this.ColumnFrequency});
+      this.dataGridView1.Location = new System.Drawing.Point(273, 76);
+      this.dataGridView1.Name = "dataGridView1";
+      this.dataGridView1.ReadOnly = true;
+      this.dataGridView1.RowTemplate.Height = 24;
+      this.dataGridView1.Size = new System.Drawing.Size(823, 336);
+      this.dataGridView1.TabIndex = 29;
+      // 
+      // listBox1
+      // 
+      this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+      this.listBox1.FormattingEnabled = true;
+      this.listBox1.ItemHeight = 20;
+      this.listBox1.Location = new System.Drawing.Point(28, 76);
+      this.listBox1.Name = "listBox1";
+      this.listBox1.Size = new System.Drawing.Size(212, 344);
+      this.listBox1.TabIndex = 28;
+      // 
       // labelStatChooseLanguage
       // 
       this.labelStatChooseLanguage.AutoSize = true;
@@ -526,28 +560,25 @@
       this.buttonStatLoadResult.TabIndex = 27;
       this.buttonStatLoadResult.Text = "Load results";
       this.buttonStatLoadResult.UseVisualStyleBackColor = true;
+      this.buttonStatLoadResult.Click += new System.EventHandler(this.buttonStatLoadResult_Click);
       // 
-      // listBox1
+      // ColumnLanguage
       // 
-      this.listBox1.FormattingEnabled = true;
-      this.listBox1.ItemHeight = 20;
-      this.listBox1.Location = new System.Drawing.Point(28, 76);
-      this.listBox1.Name = "listBox1";
-      this.listBox1.Size = new System.Drawing.Size(212, 284);
-      this.listBox1.TabIndex = 28;
+      this.ColumnLanguage.HeaderText = "Language";
+      this.ColumnLanguage.Name = "ColumnLanguage";
+      this.ColumnLanguage.ReadOnly = true;
       // 
-      // dataGridView1
+      // ColumnLetter
       // 
-      this.dataGridView1.AllowUserToAddRows = false;
-      this.dataGridView1.AllowUserToDeleteRows = false;
-      this.dataGridView1.AllowUserToOrderColumns = true;
-      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridView1.Location = new System.Drawing.Point(273, 76);
-      this.dataGridView1.Name = "dataGridView1";
-      this.dataGridView1.ReadOnly = true;
-      this.dataGridView1.RowTemplate.Height = 24;
-      this.dataGridView1.Size = new System.Drawing.Size(650, 284);
-      this.dataGridView1.TabIndex = 29;
+      this.ColumnLetter.HeaderText = "Letter";
+      this.ColumnLetter.Name = "ColumnLetter";
+      this.ColumnLetter.ReadOnly = true;
+      // 
+      // ColumnFrequency
+      // 
+      this.ColumnFrequency.HeaderText = "Frequency";
+      this.ColumnFrequency.Name = "ColumnFrequency";
+      this.ColumnFrequency.ReadOnly = true;
       // 
       // FormMain
       // 
@@ -630,5 +661,8 @@
     private System.Windows.Forms.Button buttonStatLoadResult;
     private System.Windows.Forms.DataGridView dataGridView1;
     private System.Windows.Forms.ListBox listBox1;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLanguage;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLetter;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFrequency;
   }
 }

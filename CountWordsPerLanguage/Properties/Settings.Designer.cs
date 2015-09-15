@@ -166,5 +166,17 @@ namespace CountWordsPerLanguage.Properties {
                 this["comboBoxStatChooseLanguage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SelectedTabControl {
+            get {
+                return ((int)(this["SelectedTabControl"]));
+            }
+            set {
+                this["SelectedTabControl"] = value;
+            }
+        }
     }
 }

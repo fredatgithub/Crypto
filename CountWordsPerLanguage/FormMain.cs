@@ -74,6 +74,7 @@ namespace CountWordsPerLanguage
     {
       DisplayTitle();
       LoadComboBox(comboBoxLanguage, Settings.Default.LanguagePerCountryFileName);
+      LoadComboBox(comboBoxStatChooseLanguage, Settings.Default.LanguagePerCountryFileName);
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
@@ -339,6 +340,7 @@ namespace CountWordsPerLanguage
       SetDisplayOption(Settings.Default.DisplayToolStripMenuItem);
       comboBoxLanguage.SelectedIndex = Settings.Default.comboBoxLanguage;
       comboBoxStatChooseLanguage.SelectedIndex = Settings.Default.comboBoxStatChooseLanguage;
+      tabControlMain.SelectedIndex = Settings.Default.SelectedTabControl;
       _fontSize = Settings.Default._fontSize;
     }
 
@@ -353,6 +355,7 @@ namespace CountWordsPerLanguage
       Settings.Default.comboBoxLanguage = comboBoxLanguage.SelectedIndex;
       Settings.Default._fontSize = _fontSize;
       Settings.Default.comboBoxStatChooseLanguage = comboBoxStatChooseLanguage.SelectedIndex;
+      Settings.Default.SelectedTabControl = tabControlMain.SelectedIndex;
       Settings.Default.Save();
     }
 
@@ -890,6 +893,11 @@ namespace CountWordsPerLanguage
     private static int CountCharacters(string text)
     {
       return text.Length;
+    }
+
+    private void buttonStatLoadResult_Click(object sender, EventArgs e)
+    {
+
     }
   }
 }
