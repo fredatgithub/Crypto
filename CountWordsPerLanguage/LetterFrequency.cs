@@ -72,7 +72,7 @@ namespace CountWordsPerLanguage
     public LetterFrequency() // constructor without parameters required by XML Serialization
     {
       Language = "english";
-      DateTimeProcessed = DateTime.Now;
+      DateTimeProcessed = DateTime.Now.ToLocalTime();
       DocName = "untitled Name";
     }
 
@@ -80,6 +80,7 @@ namespace CountWordsPerLanguage
     {
       Language = language;
       DocName = docName;
+      DateTimeProcessed = DateTime.Now.ToLocalTime();
     }
 
     public void FeedLetters(int[] letterArray)
