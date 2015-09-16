@@ -79,10 +79,12 @@
       this.ColumnLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ColumnLetter = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ColumnFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.listBox1 = new System.Windows.Forms.ListBox();
+      this.listBoxStatResult = new System.Windows.Forms.ListBox();
       this.labelStatChooseLanguage = new System.Windows.Forms.Label();
       this.comboBoxStatChooseLanguage = new System.Windows.Forms.ComboBox();
       this.buttonStatLoadResult = new System.Windows.Forms.Button();
+      this.labelDocTitle = new System.Windows.Forms.Label();
+      this.textBoxDocTitle = new System.Windows.Forms.TextBox();
       this.menuStrip1.SuspendLayout();
       this.tabControlMain.SuspendLayout();
       this.tabPageAdd.SuspendLayout();
@@ -317,27 +319,28 @@
       this.DisplayToolStripMenuItem.Name = "DisplayToolStripMenuItem";
       this.DisplayToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
       this.DisplayToolStripMenuItem.Text = "Affichage";
+      this.DisplayToolStripMenuItem.Click += new System.EventHandler(this.DisplayToolStripMenuItem_Click);
       // 
       // SmallToolStripMenuItem
       // 
       this.SmallToolStripMenuItem.Checked = true;
       this.SmallToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
       this.SmallToolStripMenuItem.Name = "SmallToolStripMenuItem";
-      this.SmallToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
+      this.SmallToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
       this.SmallToolStripMenuItem.Text = "Petit";
       this.SmallToolStripMenuItem.Click += new System.EventHandler(this.SmallToolStripMenuItem_Click);
       // 
       // MediumToolStripMenuItem
       // 
       this.MediumToolStripMenuItem.Name = "MediumToolStripMenuItem";
-      this.MediumToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
+      this.MediumToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
       this.MediumToolStripMenuItem.Text = "Moyen";
       this.MediumToolStripMenuItem.Click += new System.EventHandler(this.MediumToolStripMenuItem_Click);
       // 
       // LargeToolStripMenuItem
       // 
       this.LargeToolStripMenuItem.Name = "LargeToolStripMenuItem";
-      this.LargeToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
+      this.LargeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
       this.LargeToolStripMenuItem.Text = "Grand";
       this.LargeToolStripMenuItem.Click += new System.EventHandler(this.LargeToolStripMenuItem_Click);
       // 
@@ -397,6 +400,8 @@
       // tabPageAdd
       // 
       this.tabPageAdd.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.tabPageAdd.Controls.Add(this.textBoxDocTitle);
+      this.tabPageAdd.Controls.Add(this.labelDocTitle);
       this.tabPageAdd.Controls.Add(this.buttonClear);
       this.tabPageAdd.Controls.Add(this.labelCharacterCount);
       this.tabPageAdd.Controls.Add(this.textBoxSource);
@@ -428,7 +433,7 @@
       // 
       this.labelCharacterCount.AutoSize = true;
       this.labelCharacterCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelCharacterCount.Location = new System.Drawing.Point(211, 53);
+      this.labelCharacterCount.Location = new System.Drawing.Point(211, 87);
       this.labelCharacterCount.Name = "labelCharacterCount";
       this.labelCharacterCount.Size = new System.Drawing.Size(177, 20);
       this.labelCharacterCount.TabIndex = 30;
@@ -440,11 +445,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.textBoxSource.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textBoxSource.Location = new System.Drawing.Point(18, 87);
+      this.textBoxSource.Location = new System.Drawing.Point(18, 118);
       this.textBoxSource.Multiline = true;
       this.textBoxSource.Name = "textBoxSource";
       this.textBoxSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-      this.textBoxSource.Size = new System.Drawing.Size(1090, 360);
+      this.textBoxSource.Size = new System.Drawing.Size(1090, 329);
       this.textBoxSource.TabIndex = 18;
       this.textBoxSource.Text = "azAZ";
       this.textBoxSource.TextChanged += new System.EventHandler(this.textBoxSource_TextChanged);
@@ -453,7 +458,7 @@
       // 
       this.labelWordsCount.AutoSize = true;
       this.labelWordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelWordsCount.Location = new System.Drawing.Point(14, 53);
+      this.labelWordsCount.Location = new System.Drawing.Point(14, 87);
       this.labelWordsCount.Name = "labelWordsCount";
       this.labelWordsCount.Size = new System.Drawing.Size(142, 20);
       this.labelWordsCount.TabIndex = 28;
@@ -492,7 +497,7 @@
       // tabPageStatistics
       // 
       this.tabPageStatistics.Controls.Add(this.dataGridView1);
-      this.tabPageStatistics.Controls.Add(this.listBox1);
+      this.tabPageStatistics.Controls.Add(this.listBoxStatResult);
       this.tabPageStatistics.Controls.Add(this.labelStatChooseLanguage);
       this.tabPageStatistics.Controls.Add(this.comboBoxStatChooseLanguage);
       this.tabPageStatistics.Controls.Add(this.buttonStatLoadResult);
@@ -542,16 +547,16 @@
       this.ColumnFrequency.Name = "ColumnFrequency";
       this.ColumnFrequency.ReadOnly = true;
       // 
-      // listBox1
+      // listBoxStatResult
       // 
-      this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.listBoxStatResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-      this.listBox1.FormattingEnabled = true;
-      this.listBox1.ItemHeight = 20;
-      this.listBox1.Location = new System.Drawing.Point(28, 76);
-      this.listBox1.Name = "listBox1";
-      this.listBox1.Size = new System.Drawing.Size(212, 344);
-      this.listBox1.TabIndex = 28;
+      this.listBoxStatResult.FormattingEnabled = true;
+      this.listBoxStatResult.ItemHeight = 20;
+      this.listBoxStatResult.Location = new System.Drawing.Point(28, 76);
+      this.listBoxStatResult.Name = "listBoxStatResult";
+      this.listBoxStatResult.Size = new System.Drawing.Size(212, 344);
+      this.listBoxStatResult.TabIndex = 28;
       // 
       // labelStatChooseLanguage
       // 
@@ -577,11 +582,29 @@
       this.buttonStatLoadResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonStatLoadResult.Location = new System.Drawing.Point(388, 23);
       this.buttonStatLoadResult.Name = "buttonStatLoadResult";
-      this.buttonStatLoadResult.Size = new System.Drawing.Size(140, 31);
+      this.buttonStatLoadResult.Size = new System.Drawing.Size(228, 31);
       this.buttonStatLoadResult.TabIndex = 27;
       this.buttonStatLoadResult.Text = "Load results";
       this.buttonStatLoadResult.UseVisualStyleBackColor = true;
       this.buttonStatLoadResult.Click += new System.EventHandler(this.buttonStatLoadResult_Click);
+      // 
+      // labelDocTitle
+      // 
+      this.labelDocTitle.AutoSize = true;
+      this.labelDocTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelDocTitle.Location = new System.Drawing.Point(14, 56);
+      this.labelDocTitle.Name = "labelDocTitle";
+      this.labelDocTitle.Size = new System.Drawing.Size(123, 20);
+      this.labelDocTitle.TabIndex = 31;
+      this.labelDocTitle.Text = "Document title:";
+      // 
+      // textBoxDocTitle
+      // 
+      this.textBoxDocTitle.Location = new System.Drawing.Point(215, 53);
+      this.textBoxDocTitle.Name = "textBoxDocTitle";
+      this.textBoxDocTitle.Size = new System.Drawing.Size(426, 26);
+      this.textBoxDocTitle.TabIndex = 32;
+      this.textBoxDocTitle.Text = "Untitled document";
       // 
       // FormMain
       // 
@@ -663,9 +686,11 @@
     private System.Windows.Forms.ComboBox comboBoxStatChooseLanguage;
     private System.Windows.Forms.Button buttonStatLoadResult;
     private System.Windows.Forms.DataGridView dataGridView1;
-    private System.Windows.Forms.ListBox listBox1;
+    private System.Windows.Forms.ListBox listBoxStatResult;
     private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLanguage;
     private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLetter;
     private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFrequency;
+    private System.Windows.Forms.TextBox textBoxDocTitle;
+    private System.Windows.Forms.Label labelDocTitle;
   }
 }

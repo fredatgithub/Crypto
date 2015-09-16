@@ -214,16 +214,16 @@
       <englishValue>Load results</englishValue>
       <frenchValue>Charger les résultats</frenchValue>
     </term>
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
+    <term>
+      <name>Document title</name>
+      <englishValue>Document title</englishValue>
+      <frenchValue>Titre du document</frenchValue>
+    </term>
+    <term>
+      <name>Untitled document</name>
+      <englishValue>Untitled document</englishValue>
+      <frenchValue>Document sans titre</frenchValue>
+    </term>
     <!--<term>
       <name></name>
       <englishValue></englishValue>
