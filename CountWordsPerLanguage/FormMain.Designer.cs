@@ -75,7 +75,7 @@
       this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
       this.buttonCountWords = new System.Windows.Forms.Button();
       this.tabPageStatistics = new System.Windows.Forms.TabPage();
-      this.dataGridView1 = new System.Windows.Forms.DataGridView();
+      this.dataGridViewStatResult = new System.Windows.Forms.DataGridView();
       this.ColumnLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ColumnLetter = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ColumnFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,7 +89,7 @@
       this.tabControlMain.SuspendLayout();
       this.tabPageAdd.SuspendLayout();
       this.tabPageStatistics.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatResult)).BeginInit();
       this.SuspendLayout();
       // 
       // menuStrip1
@@ -496,7 +496,7 @@
       // 
       // tabPageStatistics
       // 
-      this.tabPageStatistics.Controls.Add(this.dataGridView1);
+      this.tabPageStatistics.Controls.Add(this.dataGridViewStatResult);
       this.tabPageStatistics.Controls.Add(this.listBoxStatResult);
       this.tabPageStatistics.Controls.Add(this.labelStatChooseLanguage);
       this.tabPageStatistics.Controls.Add(this.comboBoxStatChooseLanguage);
@@ -509,25 +509,25 @@
       this.tabPageStatistics.Text = "Letter statistics";
       this.tabPageStatistics.UseVisualStyleBackColor = true;
       // 
-      // dataGridView1
+      // dataGridViewStatResult
       // 
-      this.dataGridView1.AllowUserToAddRows = false;
-      this.dataGridView1.AllowUserToDeleteRows = false;
-      this.dataGridView1.AllowUserToOrderColumns = true;
-      this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.dataGridViewStatResult.AllowUserToAddRows = false;
+      this.dataGridViewStatResult.AllowUserToDeleteRows = false;
+      this.dataGridViewStatResult.AllowUserToOrderColumns = true;
+      this.dataGridViewStatResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+      this.dataGridViewStatResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dataGridViewStatResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnLanguage,
             this.ColumnLetter,
             this.ColumnFrequency});
-      this.dataGridView1.Location = new System.Drawing.Point(273, 76);
-      this.dataGridView1.Name = "dataGridView1";
-      this.dataGridView1.ReadOnly = true;
-      this.dataGridView1.RowTemplate.Height = 24;
-      this.dataGridView1.Size = new System.Drawing.Size(823, 336);
-      this.dataGridView1.TabIndex = 29;
+      this.dataGridViewStatResult.Location = new System.Drawing.Point(273, 76);
+      this.dataGridViewStatResult.Name = "dataGridViewStatResult";
+      this.dataGridViewStatResult.ReadOnly = true;
+      this.dataGridViewStatResult.RowTemplate.Height = 24;
+      this.dataGridViewStatResult.Size = new System.Drawing.Size(823, 336);
+      this.dataGridViewStatResult.TabIndex = 29;
       // 
       // ColumnLanguage
       // 
@@ -627,7 +627,7 @@
       this.tabPageAdd.PerformLayout();
       this.tabPageStatistics.ResumeLayout(false);
       this.tabPageStatistics.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatResult)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -685,7 +685,7 @@
     private System.Windows.Forms.Label labelStatChooseLanguage;
     private System.Windows.Forms.ComboBox comboBoxStatChooseLanguage;
     private System.Windows.Forms.Button buttonStatLoadResult;
-    private System.Windows.Forms.DataGridView dataGridView1;
+    private System.Windows.Forms.DataGridView dataGridViewStatResult;
     private System.Windows.Forms.ListBox listBoxStatResult;
     private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLanguage;
     private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLetter;

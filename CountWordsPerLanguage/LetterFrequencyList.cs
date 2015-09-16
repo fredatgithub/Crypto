@@ -3,9 +3,14 @@ using System.Xml.Serialization;
 
 namespace CountWordsPerLanguage
 {
-  class LetterFrequencyList
+  public class LetterFrequencyList
   {
     [XmlElement("LetterFrequency")]
-    public List<LetterFrequency> LetterFrequencies = new List<LetterFrequency>(); 
+    public List<LetterFrequency> LetterFrequencies = new List<LetterFrequency>();
+
+    public LetterFrequencyList() // useful for deserialization
+    {
+      
+    }
   }
 }
