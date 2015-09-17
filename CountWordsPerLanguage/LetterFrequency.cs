@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace CountWordsPerLanguage
 {
-  [XmlRoot("Root")]
+  [XmlRoot("LetterFrequency")]
   public class LetterFrequency
   {
     [XmlElement("Language")]
