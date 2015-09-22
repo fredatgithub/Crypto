@@ -99,7 +99,9 @@
     <Content Include="LanguagePerCountry.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="LetterCountPerLanguage.xml" />
+    <Content Include="LetterCountPerLanguage.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Translations.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

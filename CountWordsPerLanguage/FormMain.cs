@@ -22,11 +22,13 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using CountWordsPerLanguage.Properties;
@@ -810,7 +812,8 @@ namespace CountWordsPerLanguage
         comboBoxLanguage.SelectedIndex = 0;
       }
 
-      var oneLetterFrequency = new LetterFrequency(comboBoxLanguage.SelectedItem.ToString());
+      var oneLetterFrequency = new LetterFrequency(comboBoxLanguage.SelectedItem.ToString(),
+        textBoxDocTitle.Text);
       oneLetterFrequency.FeedLetters(count);
       oneLetterFrequency.AddHash(textBoxSource.Text);
       SaveToXml(oneLetterFrequency);
@@ -822,17 +825,111 @@ namespace CountWordsPerLanguage
     {
       if (!File.Exists(Settings.Default.LanguagePerCountryFileName))
       {
-        const string minimumText = "<?xml version=\"1.0\" encoding=\"utf - 8\"?>";
+        string minimumText = "<?xml version=\"1.0\" encoding=\"utf - 8\"?>" + Environment.NewLine + 
+          "<LetterFrequencies>" + Environment.NewLine + "</LetterFrequencies>";
         CreateXmlFile(Settings.Default.LanguagePerCountryFileName, minimumText);
       }
       
-      //var serializer = new XmlSerializer(typeof(LetterFrequency));
-      //using (var writer = new StreamWriter(Settings.Default.LetterCountPerLanguageFileName, true, Encoding.UTF8))
-      //{
-      //  serializer.Serialize(writer, letterFrequency);
-      //}
+      XmlDocument doc = new XmlDocument();
+      doc.Load(Settings.Default.LetterCountPerLanguageFileName);
+      XmlNode root = doc.DocumentElement;
+      XmlElement newLetterFrequency = doc.CreateElement("LetterFrequency");
+      XmlElement newLanguage = doc.CreateElement("Language");
+      newLanguage.InnerText = letterFrequency.Language;
+      XmlElement newFileHash = doc.CreateElement("FileHash");
+      newFileHash.InnerText = letterFrequency.FileHash.ToString();
 
+      XmlElement newDocName = doc.CreateElement("DocName");
+      newDocName.InnerText = letterFrequency.DocName;
 
+      XmlElement newDateTime = doc.CreateElement("DateTime");
+      newDateTime.InnerText = letterFrequency.DateTimeProcessed.ToString(CultureInfo.CurrentCulture);
+      XmlElement newLetterA = doc.CreateElement("LetterA");
+      newLetterA.InnerText = letterFrequency.LetterA.ToString();
+      XmlElement newLetterB = doc.CreateElement("LetterB");
+      newLetterB.InnerText = letterFrequency.LetterB.ToString();
+      XmlElement newLetterC = doc.CreateElement("LetterC");
+      newLetterC.InnerText = letterFrequency.LetterC.ToString();
+      XmlElement newLetterD = doc.CreateElement("LetterD");
+      newLetterD.InnerText = letterFrequency.LetterD.ToString();
+      XmlElement newLetterE = doc.CreateElement("LetterE");
+      newLetterE.InnerText = letterFrequency.LetterE.ToString();
+      XmlElement newLetterF = doc.CreateElement("LetterF");
+      newLetterF.InnerText = letterFrequency.LetterF.ToString();
+      XmlElement newLetterG = doc.CreateElement("LetterG");
+      newLetterG.InnerText = letterFrequency.LetterG.ToString();
+      XmlElement newLetterH = doc.CreateElement("LetterH");
+      newLetterH.InnerText = letterFrequency.LetterH.ToString();
+      XmlElement newLetterI = doc.CreateElement("LetterI");
+      newLetterI.InnerText = letterFrequency.LetterI.ToString();
+      XmlElement newLetterJ = doc.CreateElement("LetterJ");
+      newLetterJ.InnerText = letterFrequency.LetterJ.ToString();
+      XmlElement newLetterK = doc.CreateElement("LetterK");
+      newLetterK.InnerText = letterFrequency.LetterK.ToString();
+      XmlElement newLetterL = doc.CreateElement("LetterL");
+      newLetterL.InnerText = letterFrequency.LetterL.ToString();
+      XmlElement newLetterM = doc.CreateElement("LetterM");
+      newLetterM.InnerText = letterFrequency.LetterM.ToString();
+      XmlElement newLetterN = doc.CreateElement("LetterN");
+      newLetterN.InnerText = letterFrequency.LetterN.ToString();
+      XmlElement newLetterO = doc.CreateElement("LetterO");
+      newLetterO.InnerText = letterFrequency.LetterO.ToString();
+      XmlElement newLetterP = doc.CreateElement("LetterP");
+      newLetterP.InnerText = letterFrequency.LetterP.ToString();
+      XmlElement newLetterQ = doc.CreateElement("LetterQ");
+      newLetterQ.InnerText = letterFrequency.LetterQ.ToString();
+      XmlElement newLetterR = doc.CreateElement("LetterR");
+      newLetterR.InnerText = letterFrequency.LetterR.ToString();
+      XmlElement newLetterS = doc.CreateElement("LetterS");
+      newLetterS.InnerText = letterFrequency.LetterS.ToString();
+      XmlElement newLetterT = doc.CreateElement("LetterT");
+      newLetterT.InnerText = letterFrequency.LetterT.ToString();
+      XmlElement newLetterU = doc.CreateElement("LetterU");
+      newLetterU.InnerText = letterFrequency.LetterU.ToString();
+      XmlElement newLetterV = doc.CreateElement("LetterV");
+      newLetterV.InnerText = letterFrequency.LetterV.ToString();
+      XmlElement newLetterW = doc.CreateElement("LetterW");
+      newLetterW.InnerText = letterFrequency.LetterW.ToString();
+      XmlElement newLetterX = doc.CreateElement("LetterX");
+      newLetterX.InnerText = letterFrequency.LetterX.ToString();
+      XmlElement newLetterY = doc.CreateElement("LetterY");
+      newLetterY.InnerText = letterFrequency.LetterY.ToString();
+      XmlElement newLetterZ = doc.CreateElement("LetterZ");
+      newLetterZ.InnerText = letterFrequency.LetterZ.ToString();
+
+      newLetterFrequency.AppendChild(newLanguage);
+      newLetterFrequency.AppendChild(newFileHash);
+      newLetterFrequency.AppendChild(newDocName);
+      newLetterFrequency.AppendChild(newDateTime);
+      newLetterFrequency.AppendChild(newLetterA);
+      newLetterFrequency.AppendChild(newLetterB);
+      newLetterFrequency.AppendChild(newLetterC);
+      newLetterFrequency.AppendChild(newLetterD);
+      newLetterFrequency.AppendChild(newLetterE);
+      newLetterFrequency.AppendChild(newLetterF);
+      newLetterFrequency.AppendChild(newLetterG);
+      newLetterFrequency.AppendChild(newLetterH);
+      newLetterFrequency.AppendChild(newLetterI);
+      newLetterFrequency.AppendChild(newLetterJ);
+      newLetterFrequency.AppendChild(newLetterK);
+      newLetterFrequency.AppendChild(newLetterL);
+      newLetterFrequency.AppendChild(newLetterM);
+      newLetterFrequency.AppendChild(newLetterN);
+      newLetterFrequency.AppendChild(newLetterO);
+      newLetterFrequency.AppendChild(newLetterP);
+      newLetterFrequency.AppendChild(newLetterQ);
+      newLetterFrequency.AppendChild(newLetterR);
+      newLetterFrequency.AppendChild(newLetterS);
+      newLetterFrequency.AppendChild(newLetterT);
+      newLetterFrequency.AppendChild(newLetterU);
+      newLetterFrequency.AppendChild(newLetterV);
+      newLetterFrequency.AppendChild(newLetterW);
+      newLetterFrequency.AppendChild(newLetterX);
+      newLetterFrequency.AppendChild(newLetterY);
+      newLetterFrequency.AppendChild(newLetterZ);
+
+      if (root != null) root.AppendChild(newLetterFrequency);
+      doc.Save(Settings.Default.LetterCountPerLanguageFileName);
     }
 
     private static void CreateXmlFile(string fileName, string minimumText)
