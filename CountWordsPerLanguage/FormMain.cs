@@ -826,11 +826,13 @@ namespace CountWordsPerLanguage
         CreateXmlFile(Settings.Default.LanguagePerCountryFileName, minimumText);
       }
       
-      var serializer = new XmlSerializer(typeof(LetterFrequency));
-      using (var writer = new StreamWriter(Settings.Default.LetterCountPerLanguageFileName, true, Encoding.UTF8))
-      {
-        serializer.Serialize(writer, letterFrequency);
-      }
+      //var serializer = new XmlSerializer(typeof(LetterFrequency));
+      //using (var writer = new StreamWriter(Settings.Default.LetterCountPerLanguageFileName, true, Encoding.UTF8))
+      //{
+      //  serializer.Serialize(writer, letterFrequency);
+      //}
+
+
     }
 
     private static void CreateXmlFile(string fileName, string minimumText)
