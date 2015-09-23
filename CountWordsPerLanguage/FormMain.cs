@@ -1047,7 +1047,7 @@ namespace CountWordsPerLanguage
       return text.Length;
     }
 
-    private static LetterFrequencyList LoadFromXml(string filePath)
+    public static LetterFrequencyList LoadFromXml(string filePath)
     {
       if (!File.Exists(filePath))
       {

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LetterFrequencies>
+<LetterFrequencyList>
   <LetterFrequency>
     <Language>French</Language>
     <FileHash>20467555</FileHash>
@@ -301,4 +301,4 @@
     <LetterY>716</LetterY>
     <LetterZ>449</LetterZ>
   </LetterFrequency>
-</LetterFrequencies>
+</LetterFrequencyList>
