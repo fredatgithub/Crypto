@@ -224,16 +224,16 @@
       <englishValue>Untitled document</englishValue>
       <frenchValue>Document sans titre</frenchValue>
     </term>
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
-    <!--<term>
-      <name></name>
-      <englishValue></englishValue>
-      <frenchValue></frenchValue>
-    </term>-->
+    <term>
+      <name>Clear results</name>
+      <englishValue>Clear results</englishValue>
+      <frenchValue>Effacer les résultats</frenchValue>
+    </term>
+    <term>
+      <name>Available Language</name>
+      <englishValue>Available Language</englishValue>
+      <frenchValue>Langue disponible</frenchValue>
+    </term>
     <!--<term>
       <name></name>
       <englishValue></englishValue>

@@ -5,12 +5,12 @@ namespace CountWordsPerLanguage
 {
   public class LetterFrequencyList
   {
-    [XmlElement("LetterFrequencyList")]
-    public List<LetterFrequency> LetterFrequencies = new List<LetterFrequency>();
+    [XmlElement("LetterFrequency")]
+    public List<LetterFrequency> LetterFrequencies; // = new List<LetterFrequency>();
 
     public LetterFrequencyList() // useful for deserialization
     {
-      
+      LetterFrequencies = new List<LetterFrequency>();
     }
   }
 }

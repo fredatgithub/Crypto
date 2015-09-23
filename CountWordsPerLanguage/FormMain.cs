@@ -111,9 +111,8 @@ namespace CountWordsPerLanguage
 
     private static void CreateFile(string fileName)
     {
-      if (fileName == Settings.Default.LanguagePerCountryFileName)
-      {
-        List<string> minimumVersion = new List<string>
+      if (fileName != Settings.Default.LanguagePerCountryFileName) return;
+      List<string> minimumVersion = new List<string>
       {
         "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
         "<languages>",
@@ -141,14 +140,13 @@ namespace CountWordsPerLanguage
         "</languages>"
       };
 
-        StreamWriter sw = new StreamWriter(Settings.Default.LanguagePerCountryFileName);
-        foreach (string item in minimumVersion)
-        {
-          sw.WriteLine(item);
-        }
-
-        sw.Close();
+      StreamWriter sw = new StreamWriter(Settings.Default.LanguagePerCountryFileName);
+      foreach (string item in minimumVersion)
+      {
+        sw.WriteLine(item);
       }
+
+      sw.Close();
     }
 
     private void LoadLanguages()
@@ -471,6 +469,8 @@ namespace CountWordsPerLanguage
             buttonStatLoadResult.Text = _languageDicoEn["Load results"];
             labelDocTitle.Text = _languageDicoEn["Document title"];
             ConditionalTranslate(Language.English, textBoxDocTitle, "Untitled document");
+            buttonClearResults.Text = _languageDicoEn["Clear results"];
+            labelAvailableLanguage.Text = _languageDicoEn["Available Language"];
             _currentLanguage = "English";
             break;
           case "French":
@@ -516,6 +516,8 @@ namespace CountWordsPerLanguage
             buttonStatLoadResult.Text = _languageDicoFr["Load results"];
             labelDocTitle.Text = _languageDicoFr["Document title"];
             ConditionalTranslate(Language.French, textBoxDocTitle, "Untitled document");
+            buttonClearResults.Text = _languageDicoFr["Clear results"];
+            labelAvailableLanguage.Text = _languageDicoFr["Available Language"];
             _currentLanguage = "French";
             break;
           default:
@@ -778,7 +780,8 @@ namespace CountWordsPerLanguage
       AdjustControls(labelWordsCount, labelCharacterCount);
       AdjustControlsTextBased(textBoxSource);
       // Tab 1
-      AdjustControls(labelStatChooseLanguage, comboBoxStatChooseLanguage, buttonStatLoadResult);
+      AdjustControls(labelStatChooseLanguage, comboBoxStatChooseLanguage, buttonStatLoadResult, buttonClearResults);
+      AdjustControls(labelAvailableLanguage);
       AdjustControlsTextBased(listBoxStatResult);
     }
 
@@ -802,7 +805,7 @@ namespace CountWordsPerLanguage
       }
 
       int[] count = CountLetters(textBoxSource.Text);
-      
+
 #if debug
       int[] count2 = CountLetters2(textBoxSource.Text);
       //MessageBox.Show("Do CountLetters and CountLMetters2 bring the same result: " + (count == count2));
@@ -825,11 +828,11 @@ namespace CountWordsPerLanguage
     {
       if (!File.Exists(Settings.Default.LanguagePerCountryFileName))
       {
-        string minimumText = "<?xml version=\"1.0\" encoding=\"utf - 8\"?>" + Environment.NewLine + 
+        string minimumText = "<?xml version=\"1.0\" encoding=\"utf - 8\"?>" + Environment.NewLine +
           "<LetterFrequencies>" + Environment.NewLine + "</LetterFrequencies>";
         CreateXmlFile(Settings.Default.LanguagePerCountryFileName, minimumText);
       }
-      
+
       XmlDocument doc = new XmlDocument();
       doc.Load(Settings.Default.LetterCountPerLanguageFileName);
       XmlNode root = doc.DocumentElement;
@@ -1034,7 +1037,7 @@ namespace CountWordsPerLanguage
     private void textBoxSource_TextChanged(object sender, EventArgs e)
     {
       buttonClear.Enabled = textBoxSource.Text != string.Empty;
-      labelWordsCount.Text = Translate("Number of words") + 
+      labelWordsCount.Text = Translate("Number of words") +
         Punctuation.SpaceIfFrench(_currentLanguage) +
         Punctuation.Colon + Punctuation.OneSpace + CountWords(textBoxSource.Text);
       labelCharacterCount.Text = Translate("Number of characters") +
@@ -1071,14 +1074,128 @@ namespace CountWordsPerLanguage
         return;
       }
 
-      // deserialize the xml file into class intances
-      var statistics = LoadFromXml(Settings.Default.LetterCountPerLanguageFileName);
+      dataGridViewStatResult.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
+      dataGridViewStatResult.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+      dataGridViewStatResult.ColumnHeadersDefaultCellStyle.Font =
+          new Font(dataGridViewStatResult.Font, FontStyle.Bold);
+      dataGridViewStatResult.AutoSizeRowsMode =
+            DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+      dataGridViewStatResult.ColumnHeadersBorderStyle =
+          DataGridViewHeaderBorderStyle.Single;
+      dataGridViewStatResult.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+      dataGridViewStatResult.GridColor = Color.Black;
+      dataGridViewStatResult.RowHeadersVisible = true;
+      dataGridViewStatResult.SelectionMode =
+            DataGridViewSelectionMode.FullRowSelect;
+      dataGridViewStatResult.MultiSelect = false;
 
+      listBoxStatResult.Items.Clear();
+
+      // deserialize the xml file into class intances
+      LetterFrequencyList statistics = LoadFromXml(Settings.Default.LetterCountPerLanguageFileName);
+      Dictionary<char, int> letterFrequencyDictionary = new Dictionary<char, int>();
+      for (char letter = 'A'; letter <= 'Z'; letter++)
+      {
+        letterFrequencyDictionary.Add(letter, 0);
+      }
+
+      foreach (LetterFrequency frequency in statistics.LetterFrequencies)
+      {
+        if (!listBoxStatResult.Items.Contains(frequency.Language))
+        {
+          listBoxStatResult.Items.Add(frequency.Language);
+        }
+
+        if (frequency.Language == comboBoxStatChooseLanguage.SelectedItem.ToString())
+        {
+          letterFrequencyDictionary['A'] += frequency.LetterA;
+          letterFrequencyDictionary['B'] += frequency.LetterB;
+          letterFrequencyDictionary['C'] += frequency.LetterC;
+          letterFrequencyDictionary['D'] += frequency.LetterD;
+          letterFrequencyDictionary['E'] += frequency.LetterE;
+          letterFrequencyDictionary['F'] += frequency.LetterF;
+          letterFrequencyDictionary['G'] += frequency.LetterG;
+          letterFrequencyDictionary['H'] += frequency.LetterH;
+          letterFrequencyDictionary['I'] += frequency.LetterI;
+          letterFrequencyDictionary['J'] += frequency.LetterJ;
+          letterFrequencyDictionary['K'] += frequency.LetterK;
+          letterFrequencyDictionary['L'] += frequency.LetterL;
+          letterFrequencyDictionary['M'] += frequency.LetterM;
+          letterFrequencyDictionary['N'] += frequency.LetterN;
+          letterFrequencyDictionary['O'] += frequency.LetterO;
+          letterFrequencyDictionary['P'] += frequency.LetterP;
+          letterFrequencyDictionary['Q'] += frequency.LetterQ;
+          letterFrequencyDictionary['R'] += frequency.LetterR;
+          letterFrequencyDictionary['S'] += frequency.LetterS;
+          letterFrequencyDictionary['T'] += frequency.LetterT;
+          letterFrequencyDictionary['U'] += frequency.LetterU;
+          letterFrequencyDictionary['V'] += frequency.LetterV;
+          letterFrequencyDictionary['W'] += frequency.LetterW;
+          letterFrequencyDictionary['X'] += frequency.LetterX;
+          letterFrequencyDictionary['Y'] += frequency.LetterY;
+          letterFrequencyDictionary['Z'] += frequency.LetterZ;
+
+        }
+      }
+
+      object[] rowA = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "A", letterFrequencyDictionary['A'] };
+      object[] rowB = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "B", letterFrequencyDictionary['B'] };
+      object[] rowC = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "C", letterFrequencyDictionary['C'] };
+      object[] rowD = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "D", letterFrequencyDictionary['D'] };
+      object[] rowE = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "E", letterFrequencyDictionary['E'] };
+      object[] rowF = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "F", letterFrequencyDictionary['F'] };
+      object[] rowG = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "G", letterFrequencyDictionary['G'] };
+      object[] rowH = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "H", letterFrequencyDictionary['H'] };
+      object[] rowI = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "I", letterFrequencyDictionary['I'] };
+      object[] rowJ = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "J", letterFrequencyDictionary['J'] };
+      object[] rowK = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "K", letterFrequencyDictionary['K'] };
+      object[] rowL = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "L", letterFrequencyDictionary['L'] };
+      object[] rowM = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "M", letterFrequencyDictionary['M'] };
+      object[] rowN = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "N", letterFrequencyDictionary['N'] };
+      object[] rowO = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "O", letterFrequencyDictionary['O'] };
+      object[] rowP = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "P", letterFrequencyDictionary['P'] };
+      object[] rowQ = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "Q", letterFrequencyDictionary['Q'] };
+      object[] rowR = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "R", letterFrequencyDictionary['R'] };
+      object[] rowS = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "S", letterFrequencyDictionary['S'] };
+      object[] rowT = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "T", letterFrequencyDictionary['T'] };
+      object[] rowU = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "U", letterFrequencyDictionary['U'] };
+      object[] rowV = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "V", letterFrequencyDictionary['V'] };
+      object[] rowW = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "W", letterFrequencyDictionary['W'] };
+      object[] rowX = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "X", letterFrequencyDictionary['X'] };
+      object[] rowY = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "Y", letterFrequencyDictionary['Y'] };
+      object[] rowZ = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "Z", letterFrequencyDictionary['Z'] };
+
+      dataGridViewStatResult.Rows.Add(rowA);
+      dataGridViewStatResult.Rows.Add(rowB);
+      dataGridViewStatResult.Rows.Add(rowC);
+      dataGridViewStatResult.Rows.Add(rowD);
+      dataGridViewStatResult.Rows.Add(rowE);
+      dataGridViewStatResult.Rows.Add(rowF);
+      dataGridViewStatResult.Rows.Add(rowG);
+      dataGridViewStatResult.Rows.Add(rowH);
+      dataGridViewStatResult.Rows.Add(rowI);
+      dataGridViewStatResult.Rows.Add(rowJ);
+      dataGridViewStatResult.Rows.Add(rowK);
+      dataGridViewStatResult.Rows.Add(rowL);
+      dataGridViewStatResult.Rows.Add(rowM);
+      dataGridViewStatResult.Rows.Add(rowN);
+      dataGridViewStatResult.Rows.Add(rowO);
+      dataGridViewStatResult.Rows.Add(rowP);
+      dataGridViewStatResult.Rows.Add(rowQ);
+      dataGridViewStatResult.Rows.Add(rowR);
+      dataGridViewStatResult.Rows.Add(rowS);
+      dataGridViewStatResult.Rows.Add(rowT);
+      dataGridViewStatResult.Rows.Add(rowU);
+      dataGridViewStatResult.Rows.Add(rowV);
+      dataGridViewStatResult.Rows.Add(rowW);
+      dataGridViewStatResult.Rows.Add(rowX);
+      dataGridViewStatResult.Rows.Add(rowY);
+      dataGridViewStatResult.Rows.Add(rowZ);
     }
 
-    private void DisplayToolStripMenuItem_Click(object sender, EventArgs e)
+    private void buttonClearResults_Click(object sender, EventArgs e)
     {
-
+      dataGridViewStatResult.Rows.Clear();
     }
   }
 }
