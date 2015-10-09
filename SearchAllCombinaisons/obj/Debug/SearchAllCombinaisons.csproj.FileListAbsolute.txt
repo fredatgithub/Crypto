@@ -2,3 +2,4 @@ c:\Users\User\documents\visual studio 2015\Projects\Crypto\SearchAllCombinaisons
 c:\Users\User\documents\visual studio 2015\Projects\Crypto\SearchAllCombinaisons\bin\Debug\SearchAllCombinaisons.pdb
 c:\Users\User\documents\visual studio 2015\Projects\Crypto\SearchAllCombinaisons\obj\Debug\SearchAllCombinaisons.exe
 c:\Users\User\documents\visual studio 2015\Projects\Crypto\SearchAllCombinaisons\obj\Debug\SearchAllCombinaisons.pdb
+c:\Users\User\documents\visual studio 2015\Projects\Crypto\SearchAllCombinaisons\obj\Debug\SearchAllCombinaisons.csprojResolveAssemblyReference.cache
