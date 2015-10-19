@@ -90,7 +90,18 @@ namespace CountWordsPerLanguage
         CreateFile(fileName);
       }
 
-      XDocument xDoc = XDocument.Load(fileName);
+      XDocument xDoc;
+      try
+      {
+        xDoc = XDocument.Load(fileName);
+      }
+      catch (Exception exception)
+      {
+        MessageBox.Show("Error while loading xml file " + exception.Message);
+        CreateFile(fileName);
+        return;
+      }
+      
       var result = from node in xDoc.Descendants("language")
                    where node.HasElements
                    let xElementName = node.Element("name")
@@ -103,7 +114,10 @@ namespace CountWordsPerLanguage
       cb.Items.Clear();
       foreach (var item in result)
       {
-        cb.Items.Add(item.name);
+        if (!cb.Items.Contains(item.name))
+        {
+          cb.Items.Add(item.name);
+        }
       }
 
       cb.SelectedIndex = 0;
@@ -157,7 +171,17 @@ namespace CountWordsPerLanguage
       }
 
       // read the translation file and feed the language
-      XDocument xDoc = XDocument.Load(Settings.Default.LanguageFileName);
+      XDocument xDoc;
+      try
+      {
+        xDoc = XDocument.Load(Settings.Default.LanguageFileName);
+      }
+      catch (Exception exception)
+      {
+        MessageBox.Show("Error while loading xml file " + exception);
+        CreateLanguageFile();
+        return;
+      }
       var result = from node in xDoc.Descendants("term")
                    where node.HasElements
                    let xElementName = node.Element("name")
@@ -174,8 +198,24 @@ namespace CountWordsPerLanguage
                    };
       foreach (var i in result)
       {
-        _languageDicoEn.Add(i.name, i.englishValue);
-        _languageDicoFr.Add(i.name, i.frenchValue);
+        //_languageDicoEn.Add(i.name, i.englishValue); // keep to search this line in all my previous projects
+        if (!_languageDicoEn.ContainsKey(i.name))
+        {
+          _languageDicoEn.Add(i.name, i.englishValue);
+        }
+        else
+        {
+          MessageBox.Show("Your xml file has duplicate like: " + i.name);
+        }
+
+        if (!_languageDicoFr.ContainsKey(i.name))
+        {
+          _languageDicoFr.Add(i.name, i.frenchValue);
+        }
+        else
+        {
+          MessageBox.Show("Your xml file has duplicate like: " + i.name);
+        }
       }
     }
 
