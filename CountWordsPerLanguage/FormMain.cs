@@ -97,7 +97,7 @@ namespace CountWordsPerLanguage
       }
       catch (Exception exception)
       {
-        MessageBox.Show("Error while loading xml file " + exception.Message);
+        MessageBox.Show("Error while loading xml file " + exception);
         CreateFile(fileName);
         return;
       }
@@ -114,10 +114,7 @@ namespace CountWordsPerLanguage
       cb.Items.Clear();
       foreach (var item in result)
       {
-        if (!cb.Items.Contains(item.name))
-        {
-          cb.Items.Add(item.name);
-        }
+        cb.Items.Add(item.name);
       }
 
       cb.SelectedIndex = 0;
@@ -126,7 +123,7 @@ namespace CountWordsPerLanguage
     private static void CreateFile(string fileName)
     {
       if (fileName != Settings.Default.LanguagePerCountryFileName) return;
-      List<string> minimumVersion = new List<string>
+      var minimumVersion = new List<string>
       {
         "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
         "<languages>",
@@ -182,6 +179,7 @@ namespace CountWordsPerLanguage
         CreateLanguageFile();
         return;
       }
+      
       var result = from node in xDoc.Descendants("term")
                    where node.HasElements
                    let xElementName = node.Element("name")
@@ -198,7 +196,6 @@ namespace CountWordsPerLanguage
                    };
       foreach (var i in result)
       {
-        //_languageDicoEn.Add(i.name, i.englishValue); // keep to search this line in all my previous projects
         if (!_languageDicoEn.ContainsKey(i.name))
         {
           _languageDicoEn.Add(i.name, i.englishValue);
@@ -221,13 +218,9 @@ namespace CountWordsPerLanguage
 
     private static void CreateLanguageFile()
     {
-      List<string> minimumVersion = new List<string>
+      var minimumVersion = new List<string>
       {
         "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
-        "<Document>",
-        "<DocumentVersion>",
-        "<version> 1.0 </version>",
-        "</DocumentVersion>",
         "<terms>",
          "<term>",
         "<name>MenuFile</name>",
@@ -359,8 +352,7 @@ namespace CountWordsPerLanguage
           "<englishValue>About</englishValue>",
           "<frenchValue>A propos de ...</frenchValue>",
         "</term>",
-        "</terms>",
-        "</Document>"
+        "</terms>"
       };
       StreamWriter sw = new StreamWriter(Settings.Default.LanguageFileName);
       foreach (string item in minimumVersion)
@@ -581,7 +573,7 @@ namespace CountWordsPerLanguage
         if (language == Language.English)
         {
           ctrl.Text = _languageDicoEn[condition];
-          return;
+          // return; // if any other language
         }
       }
     }
@@ -984,7 +976,7 @@ namespace CountWordsPerLanguage
 
     private static int[] CountLetters2(string text)
     {
-      int[] resultTmp = new int[399];
+      var resultTmp = new int[399];
       foreach (char letter in text)
       {
         if (char.IsLetter(letter))
@@ -993,7 +985,7 @@ namespace CountWordsPerLanguage
         }
       }
 
-      int[] result = new int[27];
+      var result = new int[27];
       for (int i = 1; i < 27; i++)
       {
         // ASCII code table
@@ -1009,7 +1001,7 @@ namespace CountWordsPerLanguage
 
     private static int[] CountLetters(string text)
     {
-      int[] result = new int[27]; // result[1] counts a
+      var result = new int[27]; // result[1] counts a
       foreach (char letter in text)
       {
         if (char.IsLetter(letter)) // exclude numerics, special char
@@ -1097,7 +1089,7 @@ namespace CountWordsPerLanguage
         CreateFile(filePath);
       }
 
-      XmlSerializer deserializer = new XmlSerializer(typeof(LetterFrequencyList));
+      var deserializer = new XmlSerializer(typeof(LetterFrequencyList));
       TextReader reader = new StreamReader(filePath);
       object obj = deserializer.Deserialize(reader);
       LetterFrequencyList xmlData = (LetterFrequencyList)obj;
@@ -1133,7 +1125,7 @@ namespace CountWordsPerLanguage
 
       // deserialize the xml file into class intances
       LetterFrequencyList statistics = LoadFromXml(Settings.Default.LetterCountPerLanguageFileName);
-      Dictionary<char, int> letterFrequencyDictionary = new Dictionary<char, int>();
+      var letterFrequencyDictionary = new Dictionary<char, int>();
       for (char letter = 'A'; letter <= 'Z'; letter++)
       {
         letterFrequencyDictionary.Add(letter, 0);
@@ -1146,36 +1138,33 @@ namespace CountWordsPerLanguage
           listBoxStatResult.Items.Add(frequency.Language);
         }
 
-        if (frequency.Language == comboBoxStatChooseLanguage.SelectedItem.ToString())
-        {
-          letterFrequencyDictionary['A'] += frequency.LetterA;
-          letterFrequencyDictionary['B'] += frequency.LetterB;
-          letterFrequencyDictionary['C'] += frequency.LetterC;
-          letterFrequencyDictionary['D'] += frequency.LetterD;
-          letterFrequencyDictionary['E'] += frequency.LetterE;
-          letterFrequencyDictionary['F'] += frequency.LetterF;
-          letterFrequencyDictionary['G'] += frequency.LetterG;
-          letterFrequencyDictionary['H'] += frequency.LetterH;
-          letterFrequencyDictionary['I'] += frequency.LetterI;
-          letterFrequencyDictionary['J'] += frequency.LetterJ;
-          letterFrequencyDictionary['K'] += frequency.LetterK;
-          letterFrequencyDictionary['L'] += frequency.LetterL;
-          letterFrequencyDictionary['M'] += frequency.LetterM;
-          letterFrequencyDictionary['N'] += frequency.LetterN;
-          letterFrequencyDictionary['O'] += frequency.LetterO;
-          letterFrequencyDictionary['P'] += frequency.LetterP;
-          letterFrequencyDictionary['Q'] += frequency.LetterQ;
-          letterFrequencyDictionary['R'] += frequency.LetterR;
-          letterFrequencyDictionary['S'] += frequency.LetterS;
-          letterFrequencyDictionary['T'] += frequency.LetterT;
-          letterFrequencyDictionary['U'] += frequency.LetterU;
-          letterFrequencyDictionary['V'] += frequency.LetterV;
-          letterFrequencyDictionary['W'] += frequency.LetterW;
-          letterFrequencyDictionary['X'] += frequency.LetterX;
-          letterFrequencyDictionary['Y'] += frequency.LetterY;
-          letterFrequencyDictionary['Z'] += frequency.LetterZ;
-
-        }
+        if (frequency.Language != comboBoxStatChooseLanguage.SelectedItem.ToString()) continue;
+        letterFrequencyDictionary['A'] += frequency.LetterA;
+        letterFrequencyDictionary['B'] += frequency.LetterB;
+        letterFrequencyDictionary['C'] += frequency.LetterC;
+        letterFrequencyDictionary['D'] += frequency.LetterD;
+        letterFrequencyDictionary['E'] += frequency.LetterE;
+        letterFrequencyDictionary['F'] += frequency.LetterF;
+        letterFrequencyDictionary['G'] += frequency.LetterG;
+        letterFrequencyDictionary['H'] += frequency.LetterH;
+        letterFrequencyDictionary['I'] += frequency.LetterI;
+        letterFrequencyDictionary['J'] += frequency.LetterJ;
+        letterFrequencyDictionary['K'] += frequency.LetterK;
+        letterFrequencyDictionary['L'] += frequency.LetterL;
+        letterFrequencyDictionary['M'] += frequency.LetterM;
+        letterFrequencyDictionary['N'] += frequency.LetterN;
+        letterFrequencyDictionary['O'] += frequency.LetterO;
+        letterFrequencyDictionary['P'] += frequency.LetterP;
+        letterFrequencyDictionary['Q'] += frequency.LetterQ;
+        letterFrequencyDictionary['R'] += frequency.LetterR;
+        letterFrequencyDictionary['S'] += frequency.LetterS;
+        letterFrequencyDictionary['T'] += frequency.LetterT;
+        letterFrequencyDictionary['U'] += frequency.LetterU;
+        letterFrequencyDictionary['V'] += frequency.LetterV;
+        letterFrequencyDictionary['W'] += frequency.LetterW;
+        letterFrequencyDictionary['X'] += frequency.LetterX;
+        letterFrequencyDictionary['Y'] += frequency.LetterY;
+        letterFrequencyDictionary['Z'] += frequency.LetterZ;
       }
 
       object[] rowA = { comboBoxStatChooseLanguage.SelectedItem.ToString(), "A", letterFrequencyDictionary['A'] };
