@@ -80,7 +80,17 @@ namespace Crypto
       }
 
       // read the translation file and feed the language
-      XDocument xDoc = XDocument.Load(Settings.Default.LanguageFileName);
+      XDocument xDoc;
+      try
+      {
+        xDoc = XDocument.Load(Settings.Default.LanguageFileName);
+      }
+      catch (Exception exception)
+      {
+        MessageBox.Show("Error while loading xml file " + exception);
+        CreateLanguageFile();
+        return;
+      }
       var result = from node in xDoc.Descendants("term")
                    where node.HasElements
                    let xElementName = node.Element("name")
@@ -97,8 +107,24 @@ namespace Crypto
                    };
       foreach (var i in result)
       {
-        _languageDicoEn.Add(i.name, i.englishValue);
-        _languageDicoFr.Add(i.name, i.frenchValue);
+        //_languageDicoEn.Add(i.name, i.englishValue); // keep to search this line in all my previous projects
+        if (!_languageDicoEn.ContainsKey(i.name))
+        {
+          _languageDicoEn.Add(i.name, i.englishValue);
+        }
+        else
+        {
+          MessageBox.Show("Your xml file has duplicate like: " + i.name);
+        }
+
+        if (!_languageDicoFr.ContainsKey(i.name))
+        {
+          _languageDicoFr.Add(i.name, i.frenchValue);
+        }
+        else
+        {
+          MessageBox.Show("Your xml file has duplicate like: " + i.name);
+        }
       }
     }
 
@@ -106,11 +132,7 @@ namespace Crypto
     {
       List<string> minimumVersion = new List<string>
       {
-        "<?xml version=\"1.0\" encoding=\"utf - 8\" ?>",
-        "<Document>",
-        "<DocumentVersion>",
-        "<version> 1.0 </version>",
-        "</DocumentVersion>",
+        "<?xml version=\"1.0\" encoding=\"utf-8\" ?>",
         "<terms>",
          "<term>",
         "<name>MenuFile</name>",
@@ -242,8 +264,7 @@ namespace Crypto
           "<englishValue>About</englishValue>",
           "<frenchValue>A propos de ...</frenchValue>",
         "</term>",
-        "</terms>",
-        "</Document>"
+        "</terms>"
       };
       StreamWriter sw = new StreamWriter(Settings.Default.LanguageFileName);
       foreach (string item in minimumVersion)
@@ -509,7 +530,7 @@ namespace Crypto
     {
       if (tb != ActiveControl) return;
       var selectionIndex = tb.SelectionStart;
-      tb.Text = tb.Text.Insert(selectionIndex, Clipboard.GetText());
+      tb.SelectedText = Clipboard.GetText();
       tb.SelectionStart = selectionIndex + Clipboard.GetText().Length;
     }
 
